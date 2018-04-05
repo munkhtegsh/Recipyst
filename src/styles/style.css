@@ -1,0 +1,62 @@
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0px; }
+
+.header__top_menu {
+  background-color: turquoise;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh; }
+
+.header__home__grocery {
+  background-color: yellow;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.header__calendar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f5ada0; }
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff; }
+
+.searchFood {
+  position: relative;
+  margin-top: 18vh; }
+
+.login {
+  display: flex;
+  height: 40vh;
+  width: 60%;
+  margin: 0 auto;
+  background-color: darkorchid;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.weekly {
+  position: relative;
+  margin-top: 18vh; }
+
+.nodata {
+  margin-top: 42vh; }
+
+.ingredients {
+  position: relative;
+  margin-top: 18vh; }
