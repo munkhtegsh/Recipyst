@@ -86,3 +86,6 @@
 
 .ReactModalPortal .ReactModal__Overlay--before-close {
   opacity: 0; }
+
+.searchVideo {
+  margin-top: 18vh; }

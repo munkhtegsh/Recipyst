@@ -32,22 +32,26 @@ class OptionalModal extends Component {
   }
 
   handleCheckbox (e) {
-    // check that input is selected
-      // if selected state need to filled by the value
+    const healt = {};
+    const diet = {};
+    const alergies = {};
+    if (e.target.name === 'healt') {
+      healt[e.target.name] = e.target.value;
+    } 
+    
+
     if (e.target.type === 'checkbox') {
-      // this.setState({
-      //   [e.target.name]: e.target.value
-      // })
+
 
     }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (e.target.type === 'selected' ) {
-      alert(this.refs.test.checked === true)
-    // }
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
+    let query = ''
+    if(this.refs.test.checked === true) {
+      query = 'healt=vegetarian'
+    }
 
   }
 
@@ -73,6 +77,133 @@ class OptionalModal extends Component {
               />
             </label>
 
+            <label> Vegan
+            <input type="checkbox"
+              value="vegan"
+              name="health"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Sugar Conscious
+            <input type="checkbox"
+              value="sugarConscious"
+              name="health"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Alcohol-Free
+            <input type="checkbox"
+              value="alcohol-free"
+              name="health"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <h4> DIET </h4>
+
+            <label> High-Protein
+            <input type="checkbox"
+              value="high-protein"
+              name="diet"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Low-Carb 
+            <input type="checkbox"
+              value="low-carb"
+              name="diet"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Low-Fat 
+            <input type="checkbox"
+              value="low-fat"
+              name="diet"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Balanced
+            <input type="checkbox"
+              value="balanced"
+              name="diet"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+            </form>
+
+            <h4> ALLERGIES </h4>
+
+            <form>
+            <label> Gluten
+            <input type="checkbox"
+              value="gluten"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Dairy
+            <input type="checkbox"
+              value="dairy"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Eggs
+            <input type="checkbox"
+            value="eggs"
+            name="allergies"
+            onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Soy
+            <input type="checkbox"
+              value="soy"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Fish
+            <input type="checkbox"
+              value="fish"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Shellfish
+            <input type="checkbox"
+              value="shellfish"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Tree nuts
+            <input type="checkbox"
+              value="treenuts"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+            <label> Peanuts
+            <input type="checkbox"
+              value="peanuts"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+            />
+            </label>
+
+
             <input type="submit" value="Submit" />
           </form>
 
@@ -83,129 +214,3 @@ class OptionalModal extends Component {
 } 
 export default OptionalModal;
 
-
-// <label> Vegan
-// <input type="checkbox"
-//   value="vegan"
-//   name="health"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Sugar Conscious
-// <input type="checkbox"
-//   value="sugarConscious"
-//   name="health"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Alcohol-Free
-// <input type="checkbox"
-//   value="alcohol-free"
-//   name="health"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <h4> DIET </h4>
-
-// <label> High-Protein
-// <input type="checkbox"
-//   value="high-protein"
-//   name="diet"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Low-Carb 
-// <input type="checkbox"
-//   value="low-carb"
-//   name="diet"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Low-Fat 
-// <input type="checkbox"
-//   value="low-fat"
-//   name="diet"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Balanced
-// <input type="checkbox"
-//   value="balanced"
-//   name="diet"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-// </form>
-
-// <h4> ALLERGIES </h4>
-
-// <form>
-// <label> Gluten
-// <input type="checkbox"
-//   value="gluten"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Dairy
-// <input type="checkbox"
-//   value="dairy"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Eggs
-// <input type="checkbox"
-// value="eggs"
-// name="allergies"
-// onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Soy
-// <input type="checkbox"
-//   value="soy"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Fish
-// <input type="checkbox"
-//   value="fish"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Shellfish
-// <input type="checkbox"
-//   value="shellfish"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Tree nuts
-// <input type="checkbox"
-//   value="treenuts"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
-
-// <label> Peanuts
-// <input type="checkbox"
-//   value="peanuts"
-//   name="allergies"
-//   onChange={(e) => this.handleCheckbox(e)}
-// />
-// </label>
