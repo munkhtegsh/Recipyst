@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import NoData from '../item/Nodata';
 import Nodata from '../item/Nodata';
+import { getFavoriteItem } from '../../ducks/reducer';
+import { connect } from 'react-redux';
 
 class Favorite extends Component {
   constructor() {
@@ -10,19 +11,40 @@ class Favorite extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getFavoriteItem();
+  }
+
   render() {
     return (
-      <div>
+      <div className='favorite'>
         {
-          this.state.favoriteFood.length === 0
-          ?
-          <Nodata/>
-          :
-          Favorite
+          this.props.favoriteFoodList && 
+          this.props.favoriteFoodList.map((food, i) => {
+            return (
+              <div key={food.id}>
+                <img src={food.food_img} alt="food image"/>
+                <p> Food name: {food.food_name}</p>
+                <p> Ingredients: {food.ingredient_number}</p>
+                <p> Calories: {food.calories}</p>
+              </div>
+            )
+          })
         }
       </div>
     )
   }
 }
 
-export default Favorite;
+const mapStateToProps = (state) => {
+  return {
+    favoriteFoodList: state.favoriteFoodList
+  }
+}
+
+export default connect(mapStateToProps, { getFavoriteItem })(Favorite);
+
+// ?
+// <Nodata/>
+// :
+// 'HELLO'

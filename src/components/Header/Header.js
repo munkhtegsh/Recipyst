@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { createId } from '../../ducks/reducer';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
-      day: 1
+      day: 1,
+      userid: 0,
+      username: '',
+      profile_img: ''
     }
+  }
+
+  componentDidMount() { //redux is breaking, because of devtool ext
+    axios.get('/api/userinfo').then(res => {
+      this.setState({
+        userid: res.data[0].id,
+        username: res.data[0].username,
+        profile_img: res.data[0].profile_img
+      })
+    })
   }
   
   render () {
+    this.props.createId(this.state.userid);
+
     return (
       <div className="header">
         <div className="header__top_menu">
@@ -16,7 +34,7 @@ class Header extends Component {
             <h3>Home</h3>
             <h3>Grocery</h3>
           </div>
-          <img src="" alt="profile image"/>
+          <img src={this.state.profile_img} width='50' alt="profile image"/>
         </div>
         <div className="header__calendar">
           <div className="header__calendar__7">
@@ -59,4 +77,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(null, { createId })(Header);

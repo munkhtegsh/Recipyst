@@ -51,7 +51,6 @@
   flex-direction: column; }
 
 .weekly {
-  position: relative;
   margin-top: 18vh; }
 
 .nodata {
@@ -59,4 +58,31 @@
 
 .ingredients {
   position: relative;
+  margin-top: 18vh;
+  margin-bottom: 8vh;
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.favorite {
   margin-top: 18vh; }
+
+.optionModal {
+  word-break: break-all;
+  background-color: yellow; }
+
+.ReactModalPortal > div {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out; }
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1; }
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0; }

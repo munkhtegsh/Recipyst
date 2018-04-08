@@ -1,0 +1,28 @@
+.optionModal {
+  // margin-top: 25vh;
+  // width: 50%;
+  // height: 40vh;
+  word-break: break-all;
+  background-color:yellow;
+}
+
+.ReactModalPortal > div {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
