@@ -11,10 +11,6 @@ class SearchVideo extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.handleButton();
-  // }
-
   handleChange = (e) => {
     this.setState({search: e.target.value})
   }
@@ -32,7 +28,6 @@ class SearchVideo extends Component {
         id: results[0].id,
         title: results[0].title
       });
-      // console.log(results)
     })
   }
 
@@ -42,7 +37,7 @@ class SearchVideo extends Component {
         <input type="text" placeholder="Search" onChange={this.handleChange.bind(this)}/>
         <button onClick={this.handleButton.bind(this)}>search</button>
         <h4> { this.state.title } </h4>
-        <object height="100%" width="100%"> {/* Make sure that the height and width value in the iframe, object and embed element the same is.*/}
+        <object height="60vh" width="80%"> {/* Make sure that the height and width value in the iframe, object and embed element the same is.*/}
           <iframe  style={{border: 0, width: "80%", height: "60vh"}}
             src={`https://www.youtube.com/embed/${this.state.id}`}>
           </iframe>

@@ -8,23 +8,27 @@ import Favorite from './components/favorite/Favorite';
 import Recipe from './components/recipe/Recipe';
 import SearchFood from './components/searchFood/SearchFood';
 import SearchVideo from './components/searchVideo/searchVideo';
-import ShoppingList from './components/shoppingList/shoppingList';
+import ShoppingCart from './components/shoppingCart/ShoppingCart';
 import Ingredients from './components/ingredients/Ingredients';
 import Item from './components/item/Item';
+import Daily from './components/weekly/Daily';
+import QuickPicker from './components/quickPicker/QuickPicker';
 
 export default (
   <Switch>
     <Route exact path="/" component={ Login } />
     <Route path="/home" component={ Home } />
     <Route path="/timer" component={ Timer } />
-    <Route path="/weekly/:id" component={ Weekly } />
+    <Route path="/weekly" component={ Weekly } />
+    <Route path="/daily/:id" component={ Daily } />
     <Route path="/favorite/:id" component={ Favorite } />
     <Route path="/recipe/:id" component={ Recipe } />
     <Route path="/searchFood" component={ SearchFood } />
     <Route path="/item" component={ Item } />
     <Route path="/ingredients/:id" component={ Ingredients } />
-
     <Route path="/searchVideo" component={ SearchVideo } />
-    <Route path="/shoppingList/:id" component={ ShoppingList } />
+    <Route path="/shoppingCart" component={ ShoppingCart } />
+    <Route path="/quickPicker" component={ QuickPicker } />
+
   </Switch>
 )

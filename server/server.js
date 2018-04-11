@@ -50,7 +50,6 @@ passport.serializeUser((id, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  console.log(id);
   done(null, id);
 });
 
@@ -62,7 +61,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 // getUserInfo
 app.get('/api/userinfo', (req, res) => {
   const db = req.app.get('db');
-  console.log(req.user)
   db.getUserInfo([req.user]).then(userInfo => {
     res.status(200).send(userInfo);
   })
@@ -92,11 +90,14 @@ app.get('/api/weekly', (req, res) => {
 // Add to weeklyFood
 app.post('/api/weekly', (req, res) => {
   const db = req.app.get('db');
-  const { label, image, ingredients, calories } = req.body;
+  const { day, label, image, ingredients, calories, totalNutrients, totalTime, totalWeight, url } = req.body;
   const ing_num = ingredients.length + 1;
-  const ingredientsArr = JSON.stringify(ingredients)
-  console.log(label, image, ing_num, ingredients, calories, req.user)
-  db.addToWeekly([label, image, ing_num, ingredientsArr, calories, req.user]).then( response => {
+  const ingredientsArr = JSON.stringify(ingredients);
+  const totalNutrientsArr = JSON.stringify(totalNutrients);
+
+  console.log( day )
+  db.addToWeekly([day, label, image, ing_num, ingredientsArr, calories, req.user, totalNutrientsArr, 
+    totalTime, totalWeight, url]).then( response => {
     res.status(200).send(response);
   })
 });
@@ -116,13 +117,103 @@ app.get('/api/favorite', (req, res) => {
 // Add favorite food
 app.post('/api/favorite', (req, res) => {
   const db = req.app.get('db');
-  const { label, image, ingredients, calories } = req.body;
+  const { label, image, ingredients, calories, totalNutrients, totalTime, totalWeight, url
+  } = req.body;
   const ing_num = ingredients.length + 1;
   const ingredientsArr = JSON.stringify(ingredients)
+  const totalNutrientsArr = JSON.stringify(totalNutrients)
   console.log(label, image, ing_num, ingredients, calories, req.user)
-  db.addToFavorite([label, image, ing_num, ingredientsArr, calories, req.user]).then( response => {
+  db.addToFavorite([label, image, ing_num, ingredientsArr, calories, req.user, totalNutrientsArr, 
+    totalTime, totalWeight, url]).then( response => {
     res.status(200).send(response);
   })
+});
+
+//=============================================================//
+//                        DAILY FOOD                           //
+//=============================================================//
+
+// Get daily food
+app.get('/api/daily/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  db.getDailyItem([req.user, id]).then(item => {
+    res.status(200).send(item);
+  })
+});
+
+//=============================================================//
+//                           CART                              //
+//=============================================================//
+
+// Get cart items
+app.get('/api/cart', (req, res) => {
+  const db = req.app.get('db');
+  db.getCartItems([req.user]).then(items => {
+    res.status(200).send(items);
+  })
+});
+
+// Quick pick
+app.post('/api/cart', (req, res) => {
+  const db = req.app.get('db');
+  const { name, quantity } = req.body;
+  console.log(name, quantity);
+
+  db.addItemToCart([name, quantity, req.user]).then(cart => {
+    res.status(200).send(cart);
+  })
+});
+
+app.delete('/api/cart/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  db.removeItemFromCart([id, req.user]).then(item => {
+    res.status(200).send(item);
+  })
+});
+
+app.put('/api/cart/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { name, quantity } = req.body;
+  const { id } = req.params;
+  console.log( name, quantity, id)
+  if (name) {
+    db.updateNameInCart([id, name]).then(item => {  // make more accurate
+      res.status(200).send(item);
+    })
+  }
+
+  if (quantity !== 1) {
+    db.updateQuantityInCart([id, quantity]).then(item => {
+      res.status(200).send(item);
+    })
+  }
+
+  // db.updateItemInCart([id, name, quantity]).then(item => {
+  //   res.status(200).send(item);
+  // })
+});
+
+// Quick pick
+app.post('/api/quickpick', (req, res) => {
+  const db = req.app.get('db');
+  const { name, quantity } = req.body;
+  // first check the item in the table
+  db.checkItemExists([name]).then(info => {
+    if (info[0]) {
+      db.addQuantityByOne([name]).then(item => {
+        res.status(200).send(item)
+      })
+    } else {
+      db.addItemToCart([name, quantity, req.user]).then(cart => {
+        res.status(200).send(cart);
+      })
+    }
+  })
+  // if yes add the quantity by 1 
+  // else create one
+
 });
 
 const PORT = process.env.PORT || 4000;

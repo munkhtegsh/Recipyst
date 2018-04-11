@@ -6,56 +6,60 @@ class OptionalModal extends Component {
     super();
     this.state = {
       health: {
-        vegetarian: '',
-        vegan: '',
-        alcoholFree: '',
-        sugarConscious: '',
+        vegetarian: false,
+        vegan: false,
+        'alcohol-free': false,
+        'sugar-conscious': false,
       }, 
       diet: {
-        highProtein: '',
-        lowCarb: '',
-        lowFat: '',
-        balanced: ''
+        'high-protein': false,
+        'low-carb': false,
+        'low-fat': false,
+        balanced: false
       },
-      alergies: {
-        gluten: '',
-        dairy: '',
-        eggs: '',
-        soy: '',
-        fish: '',
-        shellfish: '',
-        treenuts: '',
-        peanuts: ''
+      allergies: {
+        gluten: false,
+        dairy: false,
+        eggs: false,
+        soy: false,
+        fish: false,
+        shellfish: false,
+        treenuts: false,
+        peanuts: false
+      },
+      queries: ''
+    }
+  }
+  
+  // updating states based on global objects
+  handleCheckbox (e) {  
+    let name = e.target.name;
+    let value = e.target.value;
+
+    this.setState({
+      [name]: { ...this.state[name], [value]: !this.state[name][value] } // !important, but uncontrolled vs controlled
+    })
+  }
+
+  // creating queries from selected checkbox
+  getURL = () => {
+    let newQueries = new URLSearchParams();
+    for (let key in this.state) {
+      let eachState = this.state[key];
+      for (let value in eachState) {
+        if (eachState[value]) {
+          newQueries.append(key, value);
+        }
       }
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleCheckbox (e) {
-    const healt = {};
-    const diet = {};
-    const alergies = {};
-    if (e.target.name === 'healt') {
-      healt[e.target.name] = e.target.value;
-    } 
-    
-
-    if (e.target.type === 'checkbox') {
-
-
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    let query = ''
-    if(this.refs.test.checked === true) {
-      query = 'healt=vegetarian'
-    }
-
+    let queries = newQueries.toString();
+    this.setState({ queries })    
+    console.log(queries)
+    this.props.getFood(queries);
   }
 
   render() {
+    // console.log(this.state.queries)
     return (
         <Modal 
           className="optionModal"
@@ -73,7 +77,7 @@ class OptionalModal extends Component {
                 value="vegetarian"
                 name="health"
                 onChange={(e) => this.handleCheckbox(e)}
-                ref="test"
+                default checked={this.state.health.vegetarian}
               />
             </label>
 
@@ -82,14 +86,16 @@ class OptionalModal extends Component {
               value="vegan"
               name="health"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.health.vegan}
             />
             </label>
 
             <label> Sugar Conscious
             <input type="checkbox"
-              value="sugarConscious"
+              value="sugar-conscious"
               name="health"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.health.sugarConscious}
             />
             </label>
 
@@ -98,6 +104,7 @@ class OptionalModal extends Component {
               value="alcohol-free"
               name="health"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.health.alcoholFree}
             />
             </label>
 
@@ -108,6 +115,7 @@ class OptionalModal extends Component {
               value="high-protein"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.diet.highProtein}
             />
             </label>
 
@@ -116,6 +124,7 @@ class OptionalModal extends Component {
               value="low-carb"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.diet.lowCarb}
             />
             </label>
 
@@ -124,6 +133,7 @@ class OptionalModal extends Component {
               value="low-fat"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.diet.lowFat}
             />
             </label>
 
@@ -132,6 +142,7 @@ class OptionalModal extends Component {
               value="balanced"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.diet.balanced}
             />
             </label>
             </form>
@@ -144,6 +155,7 @@ class OptionalModal extends Component {
               value="gluten"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.gluten}
             />
             </label>
 
@@ -152,14 +164,16 @@ class OptionalModal extends Component {
               value="dairy"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.dairy}
             />
             </label>
 
             <label> Eggs
             <input type="checkbox"
-            value="eggs"
-            name="allergies"
-            onChange={(e) => this.handleCheckbox(e)}
+              value="eggs"
+              name="allergies"
+              onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.eggs}
             />
             </label>
 
@@ -168,6 +182,7 @@ class OptionalModal extends Component {
               value="soy"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.soy}
             />
             </label>
 
@@ -176,6 +191,7 @@ class OptionalModal extends Component {
               value="fish"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.fish}
             />
             </label>
 
@@ -184,6 +200,7 @@ class OptionalModal extends Component {
               value="shellfish"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.shellfish}
             />
             </label>
 
@@ -192,6 +209,7 @@ class OptionalModal extends Component {
               value="treenuts"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.treenuts}
             />
             </label>
 
@@ -200,17 +218,22 @@ class OptionalModal extends Component {
               value="peanuts"
               name="allergies"
               onChange={(e) => this.handleCheckbox(e)}
+              checked={this.state.allergies.peanuts}
             />
             </label>
-
-
-            <input type="submit" value="Submit" />
           </form>
 
-          <button onClick={() => this.props.toggle()}>Done</button>
+          <button onClick={() => {
+            this.props.toggle(); 
+            this.getURL()
+          }}>Done</button>
         </Modal>
     )
   }
 } 
 export default OptionalModal;
 
+// async () => {
+//   let a =  await this.getURL(); 
+//   return a;
+// };

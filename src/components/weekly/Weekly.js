@@ -3,6 +3,7 @@ import axios from 'axios';
 import Nodata from '../item/Nodata';
 import { connect } from 'react-redux';
 import { getWeeklyItems } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
 
 class Weekly extends Component {
   constructor() {
@@ -19,30 +20,29 @@ class Weekly extends Component {
   }
 
   render() {
+    let list = this.props.weeklyFoodList.map((item, i) => {
+      return (
+        <Link key={i} to={`/daily/${i}`}>
+          <div className="weekly__item">
+              <img src={item.food_img}
+                className="weekly__img" 
+                alt=""
+              />
+            <div className="weekly__food-name">
+              <p>{i + 1}: {item.food_name}</p>
+            </div>
+          </div>
+        </Link>
+      )
+    });
+
     return (
       <div className='weekly'>
-      {
-        this.props.weeklyFoodList &&
-        this.props.weeklyFoodList.map((item, i) => {
-          return (
-            <div key={item.id}>
-              <p>Food title: {item.food_name}</p>
-              <img src={item.food_img} alt=""/>
-              <p>Ingredients: {item.ingredient_number}</p>
-              <p>Calories: {item.calories}</p>
-            </div>
-          )
-        })
-      }
+        { list }
       </div>
     )
   }
 }
-
-// ?
-// <Nodata/>
-// :
-
 
 const mapStateToProps = (state) => {
   return {
@@ -53,3 +53,9 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { getWeeklyItems })(Weekly);
 
+
+// { this.props.weeklyFoodList }
+// ?
+//   { list }
+// :
+//   <Nodata/>

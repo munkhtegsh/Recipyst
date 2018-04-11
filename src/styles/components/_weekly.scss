@@ -1,11 +1,23 @@
 .weekly {
-  // position: relative;
-  margin-top: 18vh;
+  position: relative;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  background-color:red;
+  height: 70vh;
 }
 
-// .weekly {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-  
-// }
+.weekly__item {
+  display: flex;
+  background-color: yellow;
+  margin: 0.5rem 2rem;
+  height: calc(100% / 8);
+}
+
+.weekly__img {
+  height: 100%;
+}
+
+.weekly__food-name {
+  margin-left: 2rem;
+  background-color: blue;
+}

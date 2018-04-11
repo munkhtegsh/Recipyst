@@ -8,19 +8,15 @@ import OptionalModal from '../modal/OptionalModal';
 class SearchFood extends Component {
   constructor(props) {
     super(props);
-  this.state = {
+    this.state = {
       search: '',
-      selectedOption: undefined
-      // f: '',
-      // t: '',
-      // ingr: '',
-      // diet: '',
-      // health: ''
+      selectedOption: undefined,
     }
   };
 
-  getFood() {
-    this.props.searched_Food(this.state.search);
+  // sending food req to API 
+  getFood(queries) {
+    this.props.searched_Food(`${this.state.search}`, queries);
   }
 
   toggle() {
@@ -48,12 +44,13 @@ class SearchFood extends Component {
       <div className="searchFood">
         <input type="text" placeholder="Food name here" onChange={(e) => this.setState({search: e.target.value})}/>
         <button onClick={() => this.getFood()}> Search </button>
+        <button onClick={() => this.toggle()}> options </button>
         { list }
         <OptionalModal 
           selectedOption={this.state.selectedOption}
           toggle={() => this.toggle()}
+          getFood={(queries) => this.getFood(queries)}
         />
-        <button onClick={() => this.toggle()}> options </button>
       </div>
     )
   }

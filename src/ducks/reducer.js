@@ -8,7 +8,7 @@ const initialState = {
   chosenItem: {},
   searchedFood: [],
   weeklyFoodList: [],
-  favoriteFoodList: []
+  favoriteFoodList: [],
 }
 
 // actionTypes
@@ -17,6 +17,7 @@ const SEARCHED_FOOD = "SEARCHED_FOOD";
 const CREATE_USER_ID = "CREATE_USER_ID";
 const GET_WEEKLY = "GET_WEEKLY";
 const GET_FAVORITE = "GET_FAVORITE";
+const GET_CART_ITEMS = "GET_CART_ITEMS";
 
 // reducer
 const reducer = (state = initialState, action) => {
@@ -47,8 +48,10 @@ export const chosenItem = (item) => {
   }
 };
 
-export const searched_Food = (food) => {
-  let foodList = axios.get(`https://api.edamam.com/search?q=${food}&app_id=be99730b&app_key=83ce0b8963a7cb51a02cbbcdaed58f50`)                
+export const searched_Food = (food, queries) => {
+  // console.log(food, queries)
+  let url = `https://api.edamam.com/search?q=${food}&app_id=be99730b&app_key=83ce0b8963a7cb51a02cbbcdaed58f50&${queries}`; 
+  let foodList = axios.get(url)                
     .then(list => {
       return list.data.hits
     });

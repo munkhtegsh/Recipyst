@@ -6,6 +6,7 @@
 
 .header__top_menu {
   background-color: turquoise;
+  height: 200px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -14,9 +15,10 @@
 
 .header__home__grocery {
   background-color: yellow;
+  height: 100%;
   width: 40%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center; }
 
 .header__calendar {
@@ -26,6 +28,14 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: #f5ada0; }
+
+.header > p {
+  widows: 10vw; }
+
+.header__profile-img {
+  border-radius: 50%;
+  height: 100%;
+  margin-left: 2rem; }
 
 .menu {
   position: fixed;
@@ -51,7 +61,24 @@
   flex-direction: column; }
 
 .weekly {
-  margin-top: 18vh; }
+  position: relative;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  background-color: red;
+  height: 70vh; }
+
+.weekly__item {
+  display: flex;
+  background-color: yellow;
+  margin: 0.5rem 2rem;
+  height: calc(100% / 8); }
+
+.weekly__img {
+  height: 100%; }
+
+.weekly__food-name {
+  margin-left: 2rem;
+  background-color: blue; }
 
 .nodata {
   margin-top: 42vh; }
@@ -64,7 +91,7 @@
   padding-left: 40px;
   padding-right: 40px; }
 
-.favorite {
+.shoppingCart {
   margin-top: 18vh; }
 
 .optionModal {
@@ -88,4 +115,16 @@
   opacity: 0; }
 
 .searchVideo {
+  margin-top: 18vh; }
+
+.daily {
+  margin-top: 18vh; }
+
+.daily__img {
+  width: 90%; }
+
+.favorite {
+  margin-top: 18vh; }
+
+.quickPicker {
   margin-top: 18vh; }
