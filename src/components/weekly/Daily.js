@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Daily extends Component { 
   constructor() {
@@ -10,8 +11,9 @@ class Daily extends Component {
   };
 
    componentDidMount() {
-    const id = +this.props.match.params.id + 1;
-    let item = axios.get(`/api/daily/${id}`)
+    const day = +this.props.match.params.day;
+    console.log(this.props.match.params.day)
+    let item = axios.get(`/api/daily/${day}`)
       .then(item => {
         item = item.data[0];
         this.setState({ item })
@@ -21,12 +23,14 @@ class Daily extends Component {
   render() {
     return (
       <div className='daily'>
+      <Link to={`/daily/di/${this.props.match.params.day}`}>
         <h3>{this.state.item.food_name}</h3>
         <img src={this.state.item.food_img} 
           className="daily__img"
           alt="food image"/>
         <p>Ingredients: {this.state.item.ingredient_number}</p>
-        <p>Calories: {this.state.item.calories}</p>    
+        <p>Calories: {this.state.item.calories}</p> 
+      </Link>
       </div>
     )
   }
@@ -34,3 +38,4 @@ class Daily extends Component {
 
 export default Daily;
 
+  

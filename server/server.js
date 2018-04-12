@@ -94,12 +94,24 @@ app.post('/api/weekly', (req, res) => {
   const ing_num = ingredients.length + 1;
   const ingredientsArr = JSON.stringify(ingredients);
   const totalNutrientsArr = JSON.stringify(totalNutrients);
+  // check if day is existed in the list?
+    // if yes replace it with new food
+    // else add item
 
-  console.log( day )
-  db.addToWeekly([day, label, image, ing_num, ingredientsArr, calories, req.user, totalNutrientsArr, 
-    totalTime, totalWeight, url]).then( response => {
-    res.status(200).send(response);
+  db.checkDateExistsInWeekly([day]).then(weeklyList => {
+    if (weeklyList[0]) {
+      db.updateWeeklyList([day, label, image, ing_num, ingredientsArr, calories, totalNutrientsArr, 
+        totalTime, totalWeight, url]).then(response => {
+          res.status(200).send(response);
+        })
+    } else {
+      db.addToWeekly([day, label, image, ing_num, ingredientsArr, calories, req.user, totalNutrientsArr, 
+        totalTime, totalWeight, url]).then( response => {
+        res.status(200).send(response);
+      })
+    }
   })
+
 });
 
 //=============================================================//
@@ -134,10 +146,19 @@ app.post('/api/favorite', (req, res) => {
 //=============================================================//
 
 // Get daily food
-app.get('/api/daily/:id', (req, res) => {
+app.get('/api/daily/:day', (req, res) => {
   const db = req.app.get('db');
-  const { id } = req.params;
-  db.getDailyItem([req.user, id]).then(item => {
+  const { day } = req.params;
+  db.getDailyItem([req.user, day]).then(item => {
+    res.status(200).send(item);
+  })
+});
+
+app.get('/api/daily/di/:day', (req, res) => {
+  const db = req.app.get('db');
+  const { day } = req.params;
+  console.log(day)
+  db.getDailyIngredient([req.user, day]).then(item => {
     res.status(200).send(item);
   })
 });
@@ -146,7 +167,7 @@ app.get('/api/daily/:id', (req, res) => {
 //                           CART                              //
 //=============================================================//
 
-// Get cart items
+// Get cart items from shoppingcart
 app.get('/api/cart', (req, res) => {
   const db = req.app.get('db');
   db.getCartItems([req.user]).then(items => {
@@ -154,17 +175,25 @@ app.get('/api/cart', (req, res) => {
   })
 });
 
-// Quick pick
+// Add items into shoppingcart
 app.post('/api/cart', (req, res) => {
   const db = req.app.get('db');
   const { name, quantity } = req.body;
   console.log(name, quantity);
-
-  db.addItemToCart([name, quantity, req.user]).then(cart => {
-    res.status(200).send(cart);
+  db.checkItemExists([name]).then(info => {
+    if (info[0]) {
+      db.addQuantityByNum([name, quantity]).then(item => {
+        res.status(200).send(item)
+      })
+    } else {
+      db.addItemToCart([name, quantity, req.user]).then(cart => {
+        res.status(200).send(cart);
+      })
+    }
   })
 });
 
+// Delete items from shoppingcart
 app.delete('/api/cart/:id', (req, res) => {
   const db = req.app.get('db');
   const { id } = req.params;
@@ -195,7 +224,7 @@ app.put('/api/cart/:id', (req, res) => {
   // })
 });
 
-// Quick pick
+// Quickpick
 app.post('/api/quickpick', (req, res) => {
   const db = req.app.get('db');
   const { name, quantity } = req.body;
@@ -206,6 +235,7 @@ app.post('/api/quickpick', (req, res) => {
         res.status(200).send(item)
       })
     } else {
+      // might quantity will be add by one here
       db.addItemToCart([name, quantity, req.user]).then(cart => {
         res.status(200).send(cart);
       })
@@ -213,7 +243,6 @@ app.post('/api/quickpick', (req, res) => {
   })
   // if yes add the quantity by 1 
   // else create one
-
 });
 
 const PORT = process.env.PORT || 4000;

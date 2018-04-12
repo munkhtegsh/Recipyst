@@ -22,14 +22,15 @@ class Weekly extends Component {
   render() {
     let list = this.props.weeklyFoodList.map((item, i) => {
       return (
-        <Link key={i} to={`/daily/${i}`}>
+        <Link key={i} to={`/daily/${item.day}`}>
           <div className="weekly__item">
               <img src={item.food_img}
                 className="weekly__img" 
                 alt=""
               />
             <div className="weekly__food-name">
-              <p>{i + 1}: {item.food_name}</p>
+              <p>Day: {item.day}: {item.food_name}</p>
+              <p>Calories: {item.calories}</p>
             </div>
           </div>
         </Link>
@@ -59,3 +60,6 @@ export default connect(mapStateToProps, { getWeeklyItems })(Weekly);
 //   { list }
 // :
 //   <Nodata/>
+
+
+// <p>Calories: {item.calories}</p>

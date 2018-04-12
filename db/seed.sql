@@ -30,6 +30,21 @@ values (1, 'Roast Beef', 'https://www.edamam.com/web-img/98a/98aa5d5cc0d88b28c2b
 '[{"label": "Calcium", "quantity": 632.8729694643105, "unit": "mg"}, {"label": "Carbs", "quantity": 6.961735694760001, "unit": "g"}]',
 127, 3656.49, 'http://www.saveur.com/article/Recipes/Roast-Beef')
 
+
+update weekly
+set food_name = 'test',
+food_img = 'test',
+ingredient_number = 3,
+ingredients = '[{"test": "test"}]',
+calories = 1,
+total_nutrients = '[{"test": "test"}]',
+total_time = 7,
+total_weight = 8,
+url = 'url'
+where day = 4
+
+
+
 create table favorite (
     id SERIAL PRIMARY KEY,
     food_name VARCHAR (200),

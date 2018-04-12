@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { createId } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor() {
@@ -32,6 +33,9 @@ class Header extends Component {
       this.setState({day: today});
   }
 
+  handleClick() {
+  }
+
   render () {
     return (
     <div className="header">
@@ -46,41 +50,62 @@ class Header extends Component {
           </div>
           
           <div className="header__calendar" >
-          <div className="header__calendar__7" 
-            ref="7"
-            onChange={(e) => this.handleStyle(e)}>
-            7
-          </div>
+          <Link to="/daily/7">
+            <div className="header__calendar__7" 
+              ref="7"
+              onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+              Sun
+            </div>
+          </Link>
 
-          <div className="header__calendar__1" 
-            style={{color: this.state.day === 1 ? 'red' : 'black'}}
-            ref="one" onChange={(e) => this.handleStyle(e)}>
-            1
-          </div>
+          <Link to="/daily/1" >
+            <div className="header__calendar__1" 
+              style={{color: this.state.day === 1 ? 'red' : 'black'}}
+              ref="one" onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+              Mon
+            </div>
+          </Link>
 
-          <div className="header__calendar__2" ref="2" 
-            style={{color: this.state.day === 2 ? 'red' : 'black'}}
-            onChange={(e) => this.handleStyle(e)}>
-            <p>2</p>
-          </div>
+          <Link to="/daily/2" >
+            <div className="header__calendar__2" ref="2" 
+              style={{color: this.state.day === 2 ? 'red' : 'black'}}
+              onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+              Tue
+            </div>
+          </Link>
 
-          <div className="header__calendar__3" 
-            style={{color: this.state.day === 3 ? 'red' : 'black'}}
-            ref="3" onChange={(e) => this.handleStyle(e)}>
-            3
-          </div>
+          <Link to="/daily/3" >
+            <div className="header__calendar__3" 
+              style={{color: this.state.day === 3 ? 'red' : 'black'}}
+              ref="3" onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+              Wed
+            </div>
+          </Link>
 
-          <div className="header__calendar__4" ref="4" onChange={(e) => this.handleStyle(e)}>
-           4
-          </div>
+          <Link to="/daily/4" >
+            <div className="header__calendar__4" ref="4" onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+            Thu
+            </div>
+          </Link>
 
-          <div className="header__calendar__5" ref="5" onChange={(e) => this.handleStyle(e)}>
-            5
-          </div>
+          <Link to="/daily/5" >
+            <div className="header__calendar__5" ref="5" onChange={(e) => this.handleStyle(e)}
+              onClick={() => window.location.reload()}>
+              Fri
+            </div>
+          </Link>
 
-          <div className="header__calendar__6" ref="6 onChange={(e) => this.handleStyle(e)}">
-            6
-          </div>
+          <Link to="/daily/6" >
+            <div className="header__calendar__6" ref="6 onChange={(e) => this.handleStyle(e)}"
+              onClick={() => window.location.reload()}>
+              Sat
+            </div>
+          </Link>
           </div>
         </div>
       )
@@ -92,4 +117,3 @@ export default connect(null, { createId })(Header);
 
 
 
-   

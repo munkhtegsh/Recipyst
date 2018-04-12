@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getWeeklyItems } from '../../ducks/reducer';
 import axios from 'axios';
 
+// sort the weekly list by the date and show the date
 class Ingredients extends Component {
   constructor() {
     super();
@@ -12,11 +14,12 @@ class Ingredients extends Component {
     }
   }
 
+  // Adding item into weekly list
   addToWeeklyList = () => {
     let chosenItem = {...this.props.chosenItem, day: this.state.day}
-    axios.post('/api/weekly', this.props.chosenItem).then(res => {
-      return res.data[0];
-    });
+    axios.post('/api/weekly', chosenItem).then(res => {
+      this.props.getWeeklyItems()
+    })
   }
 
   addToFavoriteList = () => {
@@ -25,6 +28,7 @@ class Ingredients extends Component {
     });
   }
 
+  // Selecting days to weekly list
   handleSelected = () => {
     let day = this.refs.selectedDay.value;
     this.setState({ day })
@@ -38,13 +42,13 @@ class Ingredients extends Component {
     console.log(this.state.day)
     return (
       <div className="ingredients">
-      <Link to='/searchFood'><button>x</button></Link>
+      <button onClick={() => this.props.history.goBack()}>x</button>
         {
           this.props.chosenItem.ingredients && 
           this.props.chosenItem.ingredients.map((item, i) => {
             return (
               <div key={i}>
-                <p className='ingredients__p'>{ i + 1 }. { item.text }</p>
+                <p className='ingredients__p'>- { item.text }</p>
                 <p className='ingredients__p'>Weight: { item.weight }</p>
               </div>
             )
@@ -52,7 +56,7 @@ class Ingredients extends Component {
         }
 
         <div>
-          <button onClick={() => this.addToWeeklyList()} disabled={!this.state.buttonClicked}> Weekly </button>
+          <Link to="/weekly"><button onClick={() => this.addToWeeklyList()} disabled={!this.state.buttonClicked}> Weekly </button></Link>
           <select value={this.state.day} id="" ref="selectedDay" onChange={() => this.handleSelected()}>
             <option value="0" disabled="true">Select Day</option>
             <option value="1">1</option>
@@ -77,4 +81,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Ingredients);
+export default connect(mapStateToProps, { getWeeklyItems })(Ingredients);

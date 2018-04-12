@@ -27,7 +27,6 @@ class OptionalModal extends Component {
         treenuts: false,
         peanuts: false
       },
-      queries: ''
     }
   }
   
@@ -53,7 +52,7 @@ class OptionalModal extends Component {
       }
     }
     let queries = newQueries.toString();
-    this.setState({ queries })    
+
     console.log(queries)
     this.props.getFood(queries);
   }
@@ -95,7 +94,7 @@ class OptionalModal extends Component {
               value="sugar-conscious"
               name="health"
               onChange={(e) => this.handleCheckbox(e)}
-              checked={this.state.health.sugarConscious}
+              checked={this.state.health['sugar-conscious']}
             />
             </label>
 
@@ -104,7 +103,7 @@ class OptionalModal extends Component {
               value="alcohol-free"
               name="health"
               onChange={(e) => this.handleCheckbox(e)}
-              checked={this.state.health.alcoholFree}
+              checked={this.state.health['alcohol-free']}
             />
             </label>
 
@@ -115,7 +114,7 @@ class OptionalModal extends Component {
               value="high-protein"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
-              checked={this.state.diet.highProtein}
+              checked={this.state.diet['high-protein']}
             />
             </label>
 
@@ -124,7 +123,7 @@ class OptionalModal extends Component {
               value="low-carb"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
-              checked={this.state.diet.lowCarb}
+              checked={this.state.diet['low-carb']}
             />
             </label>
 
@@ -133,7 +132,7 @@ class OptionalModal extends Component {
               value="low-fat"
               name="diet"
               onChange={(e) => this.handleCheckbox(e)}
-              checked={this.state.diet.lowFat}
+              checked={this.state.diet['low-fat']}
             />
             </label>
 
@@ -225,7 +224,7 @@ class OptionalModal extends Component {
 
           <button onClick={() => {
             this.props.toggle(); 
-            this.getURL()
+            this.getURL();
           }}>Done</button>
         </Modal>
     )

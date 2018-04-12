@@ -12,6 +12,7 @@ import ShoppingCart from './components/shoppingCart/ShoppingCart';
 import Ingredients from './components/ingredients/Ingredients';
 import Item from './components/item/Item';
 import Daily from './components/weekly/Daily';
+import DailyIngredient from './components/weekly/DailyIngredient'
 import QuickPicker from './components/quickPicker/QuickPicker';
 
 export default (
@@ -20,7 +21,8 @@ export default (
     <Route path="/home" component={ Home } />
     <Route path="/timer" component={ Timer } />
     <Route path="/weekly" component={ Weekly } />
-    <Route path="/daily/:id" component={ Daily } />
+    <Route path="/daily/di/:day" component={ DailyIngredient } />
+    <Route path="/daily/:day" component={ Daily } /> 
     <Route path="/favorite/:id" component={ Favorite } />
     <Route path="/recipe/:id" component={ Recipe } />
     <Route path="/searchFood" component={ SearchFood } />

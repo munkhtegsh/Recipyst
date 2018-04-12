@@ -9,7 +9,6 @@ class ShoppingCart extends Component {
       cart: [],
       name: '',
       quantity: 1,
-      obj: {}
     }
   };
 
@@ -26,6 +25,7 @@ class ShoppingCart extends Component {
 
   addItemToCart() {
     const item = {name: this.state.name, quantity: this.state.quantity}
+    console.log(item)
     if (this.state.name) {
       axios.post('/api/cart', item).then(res => {
         this.getItem();
@@ -48,11 +48,15 @@ class ShoppingCart extends Component {
     const newArr = this.state.cart.map((item, i) => {
     if (id === item.id) {
       item[e.target.name] = e.target.value;
-      this.setState({
-        [e.target.name]: e.target.value
-      })
+      // this.setState({
+      //   [e.target.name]: e.target.value
+      // })
     }
     return item;
+    })
+
+    this.setState({
+      [e.target.name]: e.target.value
     })
 
     this.setState({
@@ -61,7 +65,6 @@ class ShoppingCart extends Component {
   };
 
   render() {
-    // console.log(this.state.obj)
     let list =  this.state.cart.map((item, i) => {
       return (
         <div key={item.id}>
@@ -77,7 +80,7 @@ class ShoppingCart extends Component {
       <div className="shoppingCart">
       { list }
       <input name="name" type="text" onChange={(e) => this.setState({name: e.target.value})} placeholder="Item name here"/>
-      <input name="quantity" type="text" onChange={(e) => this.setState({name: e.target.value})} placeholder="1"/>
+      <input name="quantity" type="text" onChange={(e) => this.setState({quantity: e.target.value})} placeholder="1"/>
       <button onClick={() => {this.addItemToCart()}}>
         Add items
       </button>

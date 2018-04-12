@@ -49,7 +49,7 @@ export const chosenItem = (item) => {
 };
 
 export const searched_Food = (food, queries) => {
-  // console.log(food, queries)
+  console.log(food, queries)
   let url = `https://api.edamam.com/search?q=${food}&app_id=be99730b&app_key=83ce0b8963a7cb51a02cbbcdaed58f50&${queries}`; 
   let foodList = axios.get(url)                
     .then(list => {

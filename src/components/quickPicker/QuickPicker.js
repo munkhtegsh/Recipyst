@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import pic from './example.png'
 
 class QuickPicker extends Component {
 
@@ -13,10 +12,7 @@ class QuickPicker extends Component {
   render() {
     return (
       <div className="quickPicker">
-        <img src={pic} width="100" height="100" alt=""
-          onClick={(e) => this.handleClick(e)}
-          name="hufflePuff"
-        />
+
       </div>
     )
   }
@@ -24,3 +20,7 @@ class QuickPicker extends Component {
 
 export default QuickPicker;
 
+// <img src={pic} width="100" height="100" alt=""
+// onClick={(e) => this.handleClick(e)}
+// name="hufflePuff"
+// />
