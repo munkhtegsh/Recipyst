@@ -154,14 +154,25 @@ app.get('/api/daily/:day', (req, res) => {
   })
 });
 
+// Get total_nutrients 
 app.get('/api/daily/di/:day', (req, res) => {
   const db = req.app.get('db');
   const { day } = req.params;
   console.log(day)
-  db.getDailyIngredient([req.user, day]).then(item => {
-    res.status(200).send(item);
+  db.getTotalNutrient([req.user, day]).then(nutrients => {
+    res.status(200).send(nutrients);
   })
 });
+
+// Might need to delete below ============
+// app.get('/api/daily/di/:day', (req, res) => {
+//   const db = req.app.get('db');
+//   const { day } = req.params;
+//   console.log(day)
+//   db.getDailyIngredient([req.user, day]).then(item => {
+//     res.status(200).send(item);
+//   })
+// });
 
 //=============================================================//
 //                           CART                              //

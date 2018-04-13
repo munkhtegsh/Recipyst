@@ -1,3 +1,16 @@
-.shoppingCart {
+.favorite {
   margin-top: 18vh;
+  margin-bottom: 8vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+// .favorite__box {
+//   display: flex;
+//   width: auto;
+// }
+
+.favorite__img {
+  width: 10rem;
 }

@@ -63,3 +63,9 @@ export default connect(mapStateToProps, { getWeeklyItems })(Weekly);
 
 
 // <p>Calories: {item.calories}</p>
+
+
+// <div key={i}>
+// <p className='ingredients__p'>- { item.text }   Weight: { item.weight }</p>
+// </div>
+

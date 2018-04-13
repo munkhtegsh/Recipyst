@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Nodata from '../item/Nodata';
 import { getFavoriteItem } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Favorite extends Component {
   constructor() {
@@ -20,14 +21,18 @@ class Favorite extends Component {
       <div className='favorite'>
         {
           this.props.favoriteFoodList && 
-          this.props.favoriteFoodList.map((food, i) => {
+          this.props.favoriteFoodList.map((food, id) => {
             return (
-              <div key={food.id}>
-                <img src={food.food_img} alt="food image"/>
-                <p> Food name: {food.food_name}</p>
-                <p> Ingredients: {food.ingredient_number}</p>
-                <p> Calories: {food.calories}</p>
-              </div>
+              <Link to={`/favorite/${id}`} key={food.id}>
+                <div  className="favorite__box">
+                  <div>
+                    <img src={food.food_img} alt="food image" className="favorite__img"/>
+                    <p> {food.food_name}</p>
+                    <p> Ingredients: {food.ingredient_number}</p>
+                    <p> Calories: {food.calories}</p>
+                  </div>
+                </div>
+              </Link>
             )
           })
         }

@@ -1,13 +1,17 @@
 .daily {
   margin-top: 18vh;
+  background-color: green;
+  margin-bottom: 9vh;
 }
 
 .daily__img {
-  width: 90%;
+  width: 70%;
 }
 
-.daily p {
-  
+.daily__p {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 // .weekly {
@@ -16,3 +20,4 @@
 //   align-items: center;
   
 // }
+

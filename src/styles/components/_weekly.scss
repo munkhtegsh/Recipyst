@@ -1,16 +1,16 @@
 .weekly {
   position: relative;
-  margin-top: 20vh;
+  margin-top: 18vh;
   margin-bottom: 10vh;
-  background-color:red;
-  height: 70vh;
+  background-color:rgb(73, 61, 61);
+  height: 75vh;
 }
 
 .weekly__item {
   display: flex;
-  background-color: yellow;
+  background-color: rgb(117, 49, 115);
   margin: 0.5rem 2rem;
-  height: calc(100% / 8);
+  height: calc(100% / 6.8);
 }
 
 .weekly__img {
@@ -19,5 +19,5 @@
 
 .weekly__food-name {
   margin-left: 2rem;
-  background-color: blue;
+  background-color: green;
 }

@@ -62,37 +62,44 @@
 
 .weekly {
   position: relative;
-  margin-top: 20vh;
+  margin-top: 18vh;
   margin-bottom: 10vh;
-  background-color: red;
-  height: 70vh; }
+  background-color: #493d3d;
+  height: 75vh; }
 
 .weekly__item {
   display: flex;
-  background-color: yellow;
+  background-color: #753173;
   margin: 0.5rem 2rem;
-  height: calc(100% / 8); }
+  height: calc(100% / 6.8); }
 
 .weekly__img {
   height: 100%; }
 
 .weekly__food-name {
   margin-left: 2rem;
-  background-color: blue; }
+  background-color: green; }
 
 .nodata {
   margin-top: 42vh; }
 
 .ingredients {
-  position: relative;
   margin-top: 18vh;
+  background-color: green;
   margin-bottom: 8vh;
   text-align: left;
   padding-left: 40px;
   padding-right: 40px; }
 
-.shoppingCart {
-  margin-top: 18vh; }
+.favorite {
+  margin-top: 18vh;
+  margin-bottom: 8vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+
+.favorite__img {
+  width: 10rem; }
 
 .optionModal {
   word-break: break-all;
@@ -117,14 +124,32 @@
 .searchVideo {
   margin-top: 18vh; }
 
-.daily {
-  margin-top: 18vh; }
-
-.daily__img {
-  width: 90%; }
-
-.favorite {
+.shoppingCart {
   margin-top: 18vh; }
 
 .quickPicker {
   margin-top: 18vh; }
+
+.daily {
+  margin-top: 18vh;
+  background-color: green;
+  margin-bottom: 9vh; }
+
+.daily__img {
+  width: 70%; }
+
+.daily__p {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.nutrients {
+  position: relative;
+  margin-top: 18vh;
+  margin-bottom: 10vh;
+  background-color: green; }
+
+.nutrients__p {
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px; }
