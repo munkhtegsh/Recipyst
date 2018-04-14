@@ -6,6 +6,7 @@ import _ from 'underscore';
 class Nutrients extends Component {
   constructor() {
     super();
+    // deep obj
     this.state = {
       nutrients: {
         PROCNT: {},

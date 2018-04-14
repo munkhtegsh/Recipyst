@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif'); 
+
+@import url('https://fonts.googleapis.com/css?family=Allerta');
+// font-family: 'Allerta', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  // background: $body-color;
+  font-weight: 400
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}

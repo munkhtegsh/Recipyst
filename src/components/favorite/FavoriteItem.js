@@ -34,7 +34,7 @@ class FavoriteItem extends React.Component{
     return (
       <div className='daily'>
         <h3>{this.state.food.food_name}</h3>
-          <Link to="/">
+          <Link to={`/favorite/FavoriteNutrients/${this.props.match.params.id}`}>
           <img src={this.state.food.food_img} 
             className="daily__img"
             alt="food image"/>
@@ -42,7 +42,7 @@ class FavoriteItem extends React.Component{
         <p>Ingredients: {this.state.food.ingredient_number}</p>
         <p>Calories: {this.state.food.calories}</p> 
         <a href={this.state.food.url}><button>  Cooking Instructions </button></a>
-        <button>  Nutrein info </button>
+        <Link to={`/favorite/FavoriteNutrients/${this.props.match.params.id}`}><button>  Nutrein info </button></Link>
         { list }
     </div>
     )

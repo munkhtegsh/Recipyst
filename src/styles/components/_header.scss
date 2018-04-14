@@ -6,8 +6,10 @@
 }
 
 .header__top_menu {
-  background-color:turquoise;
-  height: 200px;
+  background-color:#5BCC20
+
+;
+  height: 200px; // why not working? 
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -16,12 +18,18 @@
 }
 
 .header__home__grocery {
-  background-color: yellow;
+  background-color:#5BCC20
+
+  ;
   height: 100%;
   width: 40%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.header__open-menu {
+  cursor: pointer;
 }
 
 .header__calendar {
@@ -30,12 +38,14 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(245, 173, 160);
 }
 
-
-.header > p {
-  widows: 10vw;
+.header__calendar > a {
+  text-decoration: none;
+  font-family: 'Allerta', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  // font-family: 'Bree Serif', serif;
 }
 
 .header__profile-img {

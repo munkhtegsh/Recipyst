@@ -17,7 +17,7 @@ const SEARCHED_FOOD = "SEARCHED_FOOD";
 const CREATE_USER_ID = "CREATE_USER_ID";
 const GET_WEEKLY = "GET_WEEKLY";
 const GET_FAVORITE = "GET_FAVORITE";
-const GET_CART_ITEMS = "GET_CART_ITEMS";
+// const GET_CART_ITEMS = "GET_CART_ITEMS";
 
 // reducer
 const reducer = (state = initialState, action) => {

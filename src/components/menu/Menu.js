@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import favorite from './favorite.svg';
+import search from './search.svg';
+import weekly from './weekly.svg';
 
 const Menu = () => {
   return (
     <div className="menu">
-      <Link to='/searchFood'><h3> Search </h3></Link>
-      <Link to='/favorite'><h3> Love </h3></Link>
-      <Link to='/timer'><h3> Timer </h3> </Link>
-      <Link to=''><h3> Settings </h3></Link>
-      <a href="http://localhost:4000/auth/logout"> 
-        <button>Logout</button>
-      </a>
+      <Link to='/favorite'>
+        <img src={favorite} width="40" alt=""/>
+      </Link>
+
+      <Link to='/searchFood'>
+        <img src={search} width="40" alt=""/>
+      </Link>
+
+      <Link to='/weekly'>
+        <img src={weekly} width="40" alt=""/>
+      </Link>
     </div>
   )
 }
