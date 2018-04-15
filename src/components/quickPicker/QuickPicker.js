@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 
 // drinks 
 import water1 from './drinks/water1.svg'
@@ -56,8 +59,26 @@ import salad from './vegetable/salad.svg';
 import eggplant from './vegetable/eggplant.svg';
 import turnip from './vegetable/turnip.svg';
 
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+  slide: {
+    padding: 10,
+  },
+};
+
 // water bug
 class QuickPicker extends Component {
+  constructor() {
+    super();
+    this.state = {
+      slideIndex: 0
+    }
+  }
 
   handleClick(e) {
     const item = {name: e.target.name, quantity: 1};
@@ -66,230 +87,259 @@ class QuickPicker extends Component {
     })
   }
 
+  handleChange = (value) => {
+    this.setState({ slideIndex: value})
+  }
+
   render() {
     return (
-      <div className="quickPicker">
-      <div className="quickPicker__meat">
+      <MuiThemeProvider>
 
-        <img src={broccoli} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="broccoli"
-        />  
+        <Tabs
+          onChange={this.handleChange}
+          value={this.state.slideIndex}
+          tabItemContainerStyle={{marginTop: "18vh", backgroundColor:'#1db954'}}
+          >
+          <Tab label="Vegetable" value={0} />
+          <Tab label="Meat" value={1} />
+          <Tab label="Fruit" value={2} />
+          <Tab label="Drinks" value={3} />
+        </Tabs>
 
-        <img src={cabbage} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="cabbage"
-        />  
-        <img src={carrot} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="carrot"
-        />  
+        <SwipeableViews
+          index={this.state.slideIndex}
+          onChangeIndex={this.handleChange}
+        >
+          <div style={{display: "flex", justifyContent: "center", marginTop: "3vh", marginBottom: "10vh"}}>
+            {/* <h2 style={styles.headline}>Tabs with slide effect</h2> */}
+            <div className="quickPicker__meat">
 
-        <img src={celery} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="celery"
-        />  
+            <img src={broccoli} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="broccoli"
+            />  
+    
+            <img src={cabbage} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="cabbage"
+            />  
+            <img src={carrot} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="carrot"
+            />  
+    
+            <img src={celery} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="celery"
+            />  
+    
+            <img src={corn} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="corn"
+            />  
+    
+            <img src={garlic} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="garlic"
+            />  
+    
+            <img src={hot_pepper} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="hot pepper"
+            />  
+    
+            <img src={mashroom} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="mashroom"
+            />  
+    
+            <img src={onion} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="onion"
+            />  
+    
+            <img src={pepper} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="pepper"
+            />  
+    
+            <img src={potato} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="potato"
+            />  
+    
+            <img src={pumpkin} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="pumpkin"
+            />  
+    
+            <img src={salad} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="lettuce"
+            />  
+    
+            <img src={eggplant} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="eggplant"
+            />
+    
+            <img src={bean} alt="" className="quickPicker__item"
+              onClick={(e) => this.handleClick(e)}
+              name="bean"
+            />
+          </div>
+          </div>
+          <div style={styles.slide} style={{display: "flex", justifyContent: "center", marginTop: "3vh", marginBottom: "10vh"}}>
+            <div className="quickPicker__meat">
+              <img src={steak} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="steak"
+              />
+              <img src={pork} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="pork"
+              />
+              <img src={salami} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="salami"
+              />
+              <img src={beef} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="beef"
+              />
+              <img src={canned} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="canned"
+              />
+              <img src={chicken} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="chicken"
+              />
+              <img src={drum} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="drum"
+              />
+              <img src={fish} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="fish"
+              />
+            </div>
+  
+          </div>
+          <div style={styles.slide} style={{display: "flex", justifyContent: "center", marginTop: "3vh", marginBottom: "10vh"}}>
+            <div className="quickPicker__fruit">
+              <img src={avocado} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="avocado"
+              />
+      
+              <img src={watermelon} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="watermelon"
+              />
+      
+              <img src={cherries} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="cherry"
+              />
+      
+              <img src={grape} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="grape"
+              />
+              <img src={kiwi} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="kiwi"
+              />
+              <img src={orange} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="orange"
+              />
+              <img src={pear} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="pear"
+              />
+              <img src={pineapple} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="pineapple"
+              />
+              
+              <img src={raspberry} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="raspberry"
+              />
+              <img src={strawberry} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="strawberry"
+              />
+      
+              <img src={apple} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="apple"
+              />
+      
+              <img src={banana} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="banana"
+              />
+            </div>
+          </div>
 
-        <img src={corn} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="corn"
-        />  
-
-        <img src={garlic} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="garlic"
-        />  
-
-        <img src={hot_pepper} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="hot pepper"
-        />  
-
-        <img src={mashroom} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="mashroom"
-        />  
-
-        <img src={onion} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="onion"
-        />  
-
-        <img src={pepper} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="pepper"
-        />  
-
-        <img src={potato} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="potato"
-        />  
-
-        <img src={pumpkin} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="pumpkin"
-        />  
-
-        <img src={salad} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="lettuce"
-        />  
-
-        <img src={eggplant} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="eggplant"
-        />
-
-        <img src={bean} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="bean"
-        />
-      </div>
-
-      <div className="quickPicker__meat">
-        <img src={steak} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="steak"
-        />
-        <img src={pork} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="pork"
-        />
-        <img src={salami} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="salami"
-        />
-        <img src={beef} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="beef"
-        />
-        <img src={canned} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="canned"
-        />
-        <img src={chicken} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="chicken"
-        />
-        <img src={drum} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="drum"
-        />
-        <img src={fish} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="fish"
-        />
-      </div>
-
-      <div className="quickPicker__fruit">
-        <img src={avocado} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="avocado"
-        />
-
-        <img src={watermelon} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="watermelon"
-        />
-
-        <img src={cherries} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="cherry"
-        />
-
-        <img src={grape} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="grape"
-        />
-        <img src={kiwi} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="kiwi"
-        />
-        <img src={orange} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="orange"
-        />
-        <img src={pear} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="pear"
-        />
-        <img src={pineapple} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="pineapple"
-        />
-        
-        <img src={raspberry} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="raspberry"
-        />
-        <img src={strawberry} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="strawberry"
-        />
-
-        <img src={apple} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="apple"
-        />
-
-        <img src={banana} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="banana"
-        />
-      </div>
-
-      <div className="quickPicker__drinks">
-        <img src={wine} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="wine"
-        />
-
-        <img src={water} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="water"
-        />
-
-        <img src={soda} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="soda"
-        />
-
-        <img src={milk} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="milk"
-        />
-
-        <img src={juice} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="juice"
-        />
-
-        <img src={champagne} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="champagne"
-        />
-
-        <img src={water1} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="water"
-        />
-
-        <img src={beer} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="beer"
-        />
-
-        <img src={can} alt="" className="quickPicker__item"
-          onClick={(e) => this.handleClick(e)}
-          name="soda"
-        />
-      </div>
-
-
-      </div>
+          <div style={{display: "flex", justifyContent: "center", marginTop: "3vh", marginBottom: "10vh"}}>
+            <div className="quickPicker__drinks">
+              <img src={wine} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="wine"
+              />
+      
+              <img src={water} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="water"
+              />
+      
+              <img src={soda} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="soda"
+              />
+      
+              <img src={milk} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="milk"
+              />
+      
+              <img src={juice} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="juice"
+              />
+      
+              <img src={champagne} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="champagne"
+              />
+      
+              <img src={water1} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="water"
+              />
+      
+              <img src={beer} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="beer"
+              />
+      
+              <img src={can} alt="" className="quickPicker__item"
+                onClick={(e) => this.handleClick(e)}
+                name="soda"
+              />
+            </div>
+          </div>
+        </SwipeableViews>
+      </MuiThemeProvider>
     )
   }
 }
 
 export default QuickPicker;
 
+// <div className="quickPicker"> //not sure that i need to wrap them up in here? might be delete this line
+// </div>
