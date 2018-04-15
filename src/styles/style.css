@@ -18,7 +18,7 @@ button:disabled {
   top: 0px; }
 
 .header__top_menu {
-  background-color: #5BCC20;
+  background-color: #1db954;
   height: 200px;
   width: 100%;
   display: flex;
@@ -27,7 +27,7 @@ button:disabled {
   height: 8vh; }
 
 .header__home__grocery {
-  background-color: #5BCC20;
+  background-color: #1db954;
   height: 100%;
   width: 40%;
   display: flex;
@@ -146,7 +146,38 @@ button:disabled {
   margin-top: 18vh; }
 
 .quickPicker {
-  margin-top: 18vh; }
+  margin-top: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 9vh; }
+
+.quickPicker__drinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap; }
+
+.quickPicker__fruit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap; }
+
+.quickPicker__meat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap; }
+
+.quickPicker__item {
+  width: 6rem;
+  border: 0.3px solid black;
+  margin: 5px; }
 
 .daily {
   margin-top: 18vh;

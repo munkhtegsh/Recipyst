@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { getWeeklyItems } from '../../ducks/reducer';
 import axios from 'axios';
 
-// sort the weekly list by the date and show the date
 class Ingredients extends Component {
   constructor() {
     super();

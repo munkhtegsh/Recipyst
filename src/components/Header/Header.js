@@ -7,6 +7,8 @@ import bag from './bag.svg'
 import open from './nav-open-table.svg';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DrawerOpenRightExample from './Drawer';
+import yellow_pencil from './yellow_pencil.svg';
+import paper_pencil from './paper_pencil.svg'; // ask which one is better ?
 
 class Header extends Component {
   constructor() {
@@ -42,9 +44,6 @@ class Header extends Component {
     this.setState({toggle: !this.state.toggle});
   }
 
-  handleClick() {
-  }
-
   render () {
     console.log(this.state.day)
     return (
@@ -55,6 +54,7 @@ class Header extends Component {
               className="header__profile-img"
               alt="profile image"/>
             <div className="header__home__grocery">
+              <Link to="/quickPicker"><img src={yellow_pencil} width="40" alt=""/></Link>
               <Link to="/shoppingcart"><img src={bag} width="40" alt=""/></Link>
               <img className='header__open-menu' src={open} width="40" alt="" onClick={() => this.toggleClick()}/>
             </div>

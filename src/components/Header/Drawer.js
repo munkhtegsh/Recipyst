@@ -14,7 +14,7 @@ import FlatButton from 'material-ui/FlatButton'
 export default (props) => (
   <div>
     <Drawer width={200} openSecondary={true} open={props.toggle} 
-      appBarStyle={{height: 'calc(100% - 64px)'}}
+
     >
       <AppBar title="Menu" 
         onClick={() => props.toggleClick()}

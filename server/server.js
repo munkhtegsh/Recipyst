@@ -190,7 +190,7 @@ app.post('/api/cart', (req, res) => {
   const db = req.app.get('db');
   const { name, quantity } = req.body;
   console.log(name, quantity);
-  db.checkItemExists([name]).then(info => {
+  db.checkItemExists([name, req.user]).then(info => {
     if (info[0]) {
       db.addQuantityByNum([name, quantity]).then(item => {
         res.status(200).send(item)
@@ -234,26 +234,26 @@ app.put('/api/cart/:id', (req, res) => {
   // })
 });
 
-// Quickpick
-app.post('/api/quickpick', (req, res) => {
-  const db = req.app.get('db');
-  const { name, quantity } = req.body;
-  // first check the item in the table
-  db.checkItemExists([name]).then(info => {
-    if (info[0]) {
-      db.addQuantityByOne([name]).then(item => {
-        res.status(200).send(item)
-      })
-    } else {
-      // might quantity will be add by one here
-      db.addItemToCart([name, quantity, req.user]).then(cart => {
-        res.status(200).send(cart);
-      })
-    }
-  })
-  // if yes add the quantity by 1 
-  // else create one
-});
+// // Quickpick
+// app.post('/api/quickpick', (req, res) => {
+//   const db = req.app.get('db');
+//   const { name, quantity } = req.body;
+//   // first check the item in the table
+//   db.checkItemExists([name]).then(info => {
+//     if (info[0]) {
+//       db.addQuantityByOne([name]).then(item => {
+//         res.status(200).send(item)
+//       })
+//     } else {
+//       // might quantity will be add by one here
+//       db.addItemToCart([name, quantity, req.user]).then(cart => {
+//         res.status(200).send(cart);
+//       })
+//     }
+//   })
+//   // if yes add the quantity by 1 
+//   // else create one
+// });
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));

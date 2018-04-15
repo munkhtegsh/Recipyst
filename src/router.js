@@ -35,6 +35,5 @@ export default (
     <Route path="/searchVideo" component={ SearchVideo } />
     <Route path="/shoppingCart" component={ ShoppingCart } />
     <Route path="/quickPicker" component={ QuickPicker } />
-
   </Switch>
 )

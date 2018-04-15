@@ -1,3 +1,38 @@
 .quickPicker {
   margin-top: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 9vh;
+}
+
+.quickPicker__drinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.quickPicker__fruit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.quickPicker__meat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.quickPicker__item {
+  width: 6rem;
+  border: 0.3px solid black;
+  margin: 5px;
 }
