@@ -1,65 +1,95 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+
+const style = {
+  width: '75%',
+  marginLeft: '20',
+  marginRight: '20',
+  textAlign: 'left',
+  display: 'inline-block',
+};
 
 class Daily extends Component { 
-  constructor() {
-    super();
-    this.state = {
-      item: {},
-      ingredients: []
-    }
+  constructor(props) {
+    super(props);
   };
 
-   componentDidMount() {
-    const day = +this.props.match.params.day;
-    let item = axios.get(`/api/daily/${day}`)
-      .then(item => {
-        if (item.data[0]) {
-          item = item.data[0];
-          let ingredients = item.ingredients;
-          this.setState({ item, ingredients });
-        }
-      })
-  }
-
   render() {
+    const { id } = this.props.match.params;
+    let idx = +id;
+    let day;
 
-    // getting ingredients
-    let list = this.state.ingredients.map((item, i) => {
-      return (
-        <div key={i}>
-          <p className="daily__p">- {item.text} {item.weight} g</p>
-        </div>
-      )
-    });
-
-    return (
-      <div className='daily'>
-        {
-          Object.keys(this.state.item).length > 0
-          ?
-          <div>
-            <h3>{this.state.item.food_name}</h3>
-              <Link to={`/daily/di/${this.props.match.params.day}`}>
-              <img src={this.state.item.food_img} 
+    // getting food item
+    let food = this.props.weeklyFoodList.map((item, i) => {
+      if (item.day === idx) {
+        day = item.day;
+        return (
+          <div key={i} className="daily__item">
+              <h3 className="food-name">{item.food_name}</h3>
+              <Link to={`/daily/di/${i}`}>
+              <img src={item.food_img} 
                 className="daily__img"
                 alt="food image"/>
               </Link>
-            <p>Ingredients: {this.state.item.ingredient_number}</p>
-            <p>Calories: {this.state.item.calories}</p> 
-            <a href={this.state.item.url}><button>  Cooking Instructions </button></a>
-            <Link to={`/daily/di/${this.props.match.params.day}`}><button>  Nutrein info </button></Link>
-            { list }
+            <RaisedButton  className="img_btn" target="_blank" label="Instructions" href={item.url}></RaisedButton>
+           
+            <Link to={`/daily/di/${i}`}> 
+              <RaisedButton className="img_btn" label="Nutrein info" href={item.url}></RaisedButton> 
+            </Link>
           </div>
-          :
-          "YOU HAVEN't CHOOSE FOOD TODAY YET!"
-        }
-      </div>
+        )
+      }
+    })
+
+
+    // <a href={item.url} target="_blank"></a>
+
+    // getting ingredients
+    let ingr = this.props.weeklyFoodList.filter((item, i) => {
+      if (item.day === day) {
+        return item;
+      }
+    })
+
+    let list = ingr[0].ingredients.map((item, i) => {     //bug, when i click on header calender day 4 
+      return (
+        <div key={i} className="ingredients-info">
+          <Paper style={style} zDepth={1}>
+            <p className="daily__p">- {item.text} {item.weight.toFixed(2)} g</p>
+          </Paper>
+        </div>
+      )
+    });    
+
+    return (
+      <MuiThemeProvider>
+        <div className='daily'>
+          {
+            Object.keys(this.props.weeklyFoodList).length > 0
+            ?
+            <div>
+              { food }
+              { list }
+
+            </div>
+            :
+            "YOU HAVEN't CHOOSE FOOD TODAY YET!"
+          }
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
 
-export default Daily;
+const mapStateToProps = (state) => {
+  return {
+    weeklyFoodList: state.weeklyFoodList
+  }
+}
 
-  
+export default connect(mapStateToProps)(Daily);

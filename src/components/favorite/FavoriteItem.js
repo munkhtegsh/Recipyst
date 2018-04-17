@@ -1,53 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getFavoriteItem} from '../../ducks/reducer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+
+const style = {
+  width: '75%',
+  marginLeft: '20',
+  marginRight: '20',
+  textAlign: 'left',
+  display: 'inline-block',
+};
 
 class FavoriteItem extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      food: {},
-      ingredients: []
     }
   }
 
-  componentDidMount() {
-    this.props.getFavoriteItem().then(res => {
-      let { id } = this.props.match.params;
-      this.setState({
-        food: this.props.favoriteFoodList[id],
-        ingredients: this.props.favoriteFoodList[id].ingredients
-      })
-    })
-  }
-
   render() {
-    const list = this.state.ingredients.map((item, i) => {
+    let { id } = this.props.match.params;
+    let favFood = this.props.favoriteFoodList[id]
+    const list = favFood.ingredients.map((item, i) => {
       return (
         <div key={i}>
-          <p className="daily__p"> {item.text} {item.weight} </p>  
+          <Paper style={style} zDepth={1}>
+            <p className="daily__p"> {item.text} {item.weight} </p>  
+          </Paper>
         </div>
       )
     })
 
     return (
-      <div className='daily'>
-        <h3>{this.state.food.food_name}</h3>
-          <Link to={`/favorite/FavoriteNutrients/${this.props.match.params.id}`}>
-          <img src={this.state.food.food_img} 
-            className="daily__img"
-            alt="food image"/>
-          </Link>
-        <p>Ingredients: {this.state.food.ingredient_number}</p>
-        <p>Calories: {this.state.food.calories}</p> 
-        <a href={this.state.food.url}><button>  Cooking Instructions </button></a>
-        <Link to={`/favorite/FavoriteNutrients/${this.props.match.params.id}`}><button>  Nutrein info </button></Link>
-        { list }
-    </div>
+      <MuiThemeProvider>
+        <div className='daily'>
+          <h3 className="food-name">{favFood.food_name} </h3>
+            <Link to={`/favorite/FavoriteNutrients/${id}`}>
+              <img src={favFood.food_img} 
+                className="daily__img"
+                alt="food image"/>
+              </Link>
+              <RaisedButton  className="img_btn" target="_blank" label="Instructions" href={favFood.url}></RaisedButton>
+              <Link to={`/favorite/FavoriteNutrients/${id}`}> 
+                <RaisedButton className="img_btn" label="Nutrein info" href={favFood.url}></RaisedButton> 
+              </Link>
+
+
+            { list }
+        </div>
+      </MuiThemeProvider>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
@@ -56,5 +61,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getFavoriteItem })(FavoriteItem)
+export default connect(mapStateToProps)(FavoriteItem)
 

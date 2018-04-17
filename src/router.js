@@ -23,8 +23,8 @@ export default (
     <Route path="/home" component={ Home } />
     <Route path="/timer" component={ Timer } />
     <Route path="/weekly" component={ Weekly } />
-    <Route path="/daily/di/:day" component={ DailyNutrients } />
-    <Route path="/daily/:day" component={ Daily } /> 
+    <Route path="/daily/di/:id" component={ DailyNutrients } />
+    <Route path="/daily/:id" component={ Daily } /> 
     <Route path="/favorite/FavoriteNutrients/:id" component={ FavoriteNutrients } />
     <Route path="/favorite/:id" component={ FavoriteItem } />
     <Route path="/favorite" component={ Favorite } />

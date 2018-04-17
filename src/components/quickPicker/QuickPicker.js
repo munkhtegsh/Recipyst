@@ -94,7 +94,7 @@ class QuickPicker extends Component {
   render() {
     return (
       <MuiThemeProvider>
-
+      <div>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
@@ -334,6 +334,7 @@ class QuickPicker extends Component {
             </div>
           </div>
         </SwipeableViews>
+        </div>
       </MuiThemeProvider>
     )
   }

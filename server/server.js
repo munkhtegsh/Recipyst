@@ -62,6 +62,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 app.get('/api/userinfo', (req, res) => {
   const db = req.app.get('db');
   db.getUserInfo([req.user]).then(userInfo => {
+    console.log(req.user)
     res.status(200).send(userInfo);
   })
 });
@@ -113,6 +114,15 @@ app.post('/api/weekly', (req, res) => {
   })
 });
 
+app.delete('/api/weekly/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  console.log(id)
+  db.deleteWeeklyItem([id]).then(respond => {
+    res.status(200).send(respond);
+  })
+})
+
 //=============================================================//
 //                        FAVORITE FOOD                        //
 //=============================================================//
@@ -140,44 +150,20 @@ app.post('/api/favorite', (req, res) => {
   })
 });
 
-//=============================================================//
-//                        DAILY FOOD                           //
-//=============================================================//
-
-// Get daily food
-app.get('/api/daily/:day', (req, res) => {
+app.delete('/api/favorite/:id', (req, res) => {
   const db = req.app.get('db');
-  const { day } = req.params;
-  db.getDailyItem([req.user, day]).then(item => {
-    res.status(200).send(item);
+  const { id } = req.params;
+  console.log(id)
+  db.deleteFavoriteItem([id]).then(respond => {
+    res.status(200).send(respond);
   })
-});
-
-// Get total_nutrients 
-app.get('/api/daily/di/:day', (req, res) => {
-  const db = req.app.get('db');
-  const { day } = req.params;
-  console.log(day)
-  db.getTotalNutrient([req.user, day]).then(nutrients => {
-    res.status(200).send(nutrients);
-  })
-});
-
-// Might need to delete below ============
-// app.get('/api/daily/di/:day', (req, res) => {
-//   const db = req.app.get('db');
-//   const { day } = req.params;
-//   console.log(day)
-//   db.getDailyIngredient([req.user, day]).then(item => {
-//     res.status(200).send(item);
-//   })
-// });
+})
 
 //=============================================================//
 //                           CART                              //
 //=============================================================//
 
-// Get cart items from shoppingcart
+// Get cart items from shoppingcart 
 app.get('/api/cart', (req, res) => {
   const db = req.app.get('db');
   db.getCartItems([req.user]).then(items => {
@@ -212,6 +198,7 @@ app.delete('/api/cart/:id', (req, res) => {
   })
 });
 
+// Update item in shoppingcart
 app.put('/api/cart/:id', (req, res) => {
   const db = req.app.get('db');
   const { name, quantity } = req.body;
@@ -233,27 +220,6 @@ app.put('/api/cart/:id', (req, res) => {
   //   res.status(200).send(item);
   // })
 });
-
-// // Quickpick
-// app.post('/api/quickpick', (req, res) => {
-//   const db = req.app.get('db');
-//   const { name, quantity } = req.body;
-//   // first check the item in the table
-//   db.checkItemExists([name]).then(info => {
-//     if (info[0]) {
-//       db.addQuantityByOne([name]).then(item => {
-//         res.status(200).send(item)
-//       })
-//     } else {
-//       // might quantity will be add by one here
-//       db.addItemToCart([name, quantity, req.user]).then(cart => {
-//         res.status(200).send(cart);
-//       })
-//     }
-//   })
-//   // if yes add the quantity by 1 
-//   // else create one
-// });
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));

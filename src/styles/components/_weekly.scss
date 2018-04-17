@@ -1,23 +1,80 @@
+
 .weekly {
   position: relative;
   margin-top: 18vh;
   margin-bottom: 10vh;
-  background-color:rgb(73, 61, 61);
-  height: 75vh;
+  // background-color:rgb(73, 61, 61);
+  // height: 75vh;
 }
 
 .weekly__item {
   display: flex;
-  background-color: rgb(117, 49, 115);
+  // background-color: rgb(117, 49, 115);
   margin: 0.5rem 2rem;
   height: calc(100% / 6.8);
+  
+
+}
+
+.weekly__image-container {
+  display: flex;
+  align-items: center;
 }
 
 .weekly__img {
-  height: 100%;
+  height: 15vh;
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .weekly__food-name {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-left: 2rem;
-  background-color: green;
+  // border: 0.5px solid rgb(73, 61, 61);
+  width: 90%;  
+  font-style: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  color: rgb(73, 61, 61);
+  background-color:#FBE9E7;
+}
+
+.weekly__food-name > a {
+  text-decoration: none;
+  color: rgb(73, 61, 61);
+}
+
+.weekly__p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase; 
+}
+
+.weekly__calories {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: -1rem;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #757575;
+  right: 0;
+  padding: 0.5rem;
+}
+
+.weekly > a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.weekly__delete {
+  position: absolute;
+  top: 0;
+  right: 0; 
+  margin: 0.5rem;
 }

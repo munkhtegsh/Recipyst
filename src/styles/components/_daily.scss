@@ -1,18 +1,44 @@
 .daily {
   margin-top: 18vh;
-  background-color: #493d3d;
+  // background-color: #493d3d;
   margin-bottom: 9vh;
+}
+
+.daily__item {
+  position: relative;
+}
+
+// .daily__img-container {
+//   position: relative;
+// }
+
+.food-name {
+  font-family: $bree-font;
+  position: absolute;
+  left: 4rem;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .daily__img {
   width: 70%;
+  border-radius: 0.5rem;
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   // margin-bottom: 24px; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+}
+
+.daily__img:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .daily__p {
   text-align: left;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.img_btn {
+  background-color:;
+  margin: 1rem;
 }
 
 // .weekly {

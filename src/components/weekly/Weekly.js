@@ -4,50 +4,58 @@ import Nodata from '../item/Nodata';
 import { connect } from 'react-redux';
 import { getWeeklyItems } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DeleteForever from 'material-ui/svg-icons/action/delete-forever';
 
 class Weekly extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      weeklyList: []
     }
   }
 
-  componentDidMount() {
-    this.props.getWeeklyItems();
-    // this.setState({weeklyList: this.props.weeklyFoodList})
-    // how can i use render more dynamic? rather using &&
+  deleteItem = (id) => {
+    axios.delete(`/api/weekly/${id}`);
+    this.props.getWeeklyItems();  // do I need to call redux or axios.post?
   }
 
   render() {
     let list = this.props.weeklyFoodList.map((item, i) => {
       return (
-        <Link key={i} to={`/daily/${item.day}`}>
-          <div className="weekly__item">
-              <img src={item.food_img}
-                className="weekly__img" 
-                alt=""
-              />
-            <div className="weekly__food-name">
-              <p>Day: {item.day}: {item.food_name}</p>
-              <p>Calories: {item.calories}</p>
+        <div>
+            <div className="weekly__item">
+              <Link key={i} to={`/daily/${item.day}`}>
+                <img src={item.food_img}
+                  className="weekly__img" 
+                  alt=""
+                />
+              </Link>
+
+              <div className="weekly__food-name">
+                <DeleteForever onClick={() => this.deleteItem(item.id)} className="weekly__delete" />
+                <Link key={i} to={`/daily/${item.day}`}> {/* why can't put 2 links? */}
+                  <p className="weekly__p"> {item.day}. {item.food_name}</p>
+                  <p className="weekly__calories">calories: {item.calories}</p>
+                </Link>
+              </div> 
+
             </div>
-          </div>
-        </Link>
+        </div>
       )
     });
 
     return (
-      <div className='weekly'>
-        { list }
-      </div>
+      <MuiThemeProvider>
+        <div className='weekly'>
+          { list }
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    userid: state.userid,
     weeklyFoodList: state.weeklyFoodList
   }
 }

@@ -2,36 +2,43 @@ import axios from 'axios';
 
 // state
 const initialState = {
-  userid: 0,
-  username: '',
-  profile_picture: '',
+  //user id was never used so trying to implement again
+  userInfo: {
+    id: 0,
+    username: '',
+    profile_img: ''
+  },
   chosenItem: {},
   searchedFood: [],
   weeklyFoodList: [],
   favoriteFoodList: [],
+  cart: []
 }
 
 // actionTypes
 const CHOSEN_ITEM = "CHOSEN_ITEM";
 const SEARCHED_FOOD = "SEARCHED_FOOD";
-const CREATE_USER_ID = "CREATE_USER_ID";
+const GET_USER_INFO = "GET_USER_INFO";
 const GET_WEEKLY = "GET_WEEKLY";
 const GET_FAVORITE = "GET_FAVORITE";
-// const GET_CART_ITEMS = "GET_CART_ITEMS";
+const GET_CART_ITEMS = "GET_CART_ITEMS";
 
 // reducer
 const reducer = (state = initialState, action) => {
+
   switch(action.type) {
     case CHOSEN_ITEM:
       return Object.assign({}, state, {chosenItem: action.payload});
     case SEARCHED_FOOD + '_FULFILLED': 
       return Object.assign({}, state, {searchedFood: action.payload});
-    case CREATE_USER_ID:
-      return {...state, userid: action.payload};
+    case GET_USER_INFO + '_FULFILLED':
+      return {...state, userInfo: {...action.payload}};
     case GET_WEEKLY + '_FULFILLED':
       return Object.assign({}, state, {weeklyFoodList: action.payload});
     case GET_FAVORITE + '_FULFILLED':
       return {...state, favoriteFoodList: action.payload};
+    case GET_CART_ITEMS + '_FULFILLED':
+      return {...state, cart: action.payload}
     default:
       return state;
   }
@@ -61,10 +68,14 @@ export const searched_Food = (food, queries) => {
   }
 };
 
-export const createId = (id) => {
+export const getUserInfo = () => {
+  const info = axios.get('/api/userinfo').then(res => {
+    return res.data[0]
+  })
+
   return {
-    type: CREATE_USER_ID,
-    payload: id
+    type: GET_USER_INFO,
+    payload: info
   }
 };
 
@@ -89,5 +100,16 @@ export const getFavoriteItem = () => {
     payload: favoriteItems
   }
 };
+
+export const getCartItems = () => {
+  let items = axios.get('/api/cart').then(res => {
+    return res.data
+  });
+
+  return {
+    type: GET_CART_ITEMS,
+    payload: items
+  }
+}
 
 export default reducer;

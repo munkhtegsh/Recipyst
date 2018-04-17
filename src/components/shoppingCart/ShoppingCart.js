@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getCartItems } from '../../ducks/reducer';
 import axios from 'axios';
 
 class ShoppingCart extends Component {
@@ -13,29 +14,21 @@ class ShoppingCart extends Component {
   };
 
   componentDidMount() {
-    this.getItem();
-  }
-
-  getItem() {
-    axios.get('/api/cart').then(res => {
-      let cart = res.data;
-      this.setState({ cart });
-    })
+    this.props.getCartItems();
   }
 
   addItemToCart() {
     const item = {name: this.state.name, quantity: this.state.quantity}
-    console.log(item)
     if (this.state.name) {
       axios.post('/api/cart', item).then(res => {
-        this.getItem();
+        this.props.getCartItems();
       }) 
     }
   }
 
   deleteItem(id) {
     axios.delete(`/api/cart/${id}`).then(res => {
-      this.getItem();
+      this.props.getCartItems();
     })  
   }
 
@@ -45,7 +38,7 @@ class ShoppingCart extends Component {
   }
 
   handleInput(e, id) {
-    const newArr = this.state.cart.map((item, i) => {
+    const newArr = this.props.cart.map((item, i) => {
     if (id === item.id) {
       item[e.target.name] = e.target.value;
       // this.setState({
@@ -65,7 +58,7 @@ class ShoppingCart extends Component {
   };
 
   render() {
-    let list =  this.state.cart.map((item, i) => {
+    let list =  this.props.cart.map((item, i) => {
       return (
         <div key={item.id}>
           <input type="text" value={item.name} name="name" onChange={(e) => this.handleInput(e, item.id)}/>
@@ -89,5 +82,10 @@ class ShoppingCart extends Component {
   }
 }
 
-export default ShoppingCart;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+}
+export default connect(mapStateToProps, { getCartItems })(ShoppingCart);
 

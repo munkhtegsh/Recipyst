@@ -6,12 +6,9 @@ import weekly from './weekly.svg';
 import backArrow from './backArrow.svg';
 
 const Menu = (props) => {
-  console.log(props)  // why props cleared out, after render???
   return (
     <div className="menu">
-      <Link to='kjkljkljlkjlkkljkjkjkljlkjkljlkjlkjlk' >
-        <img src={backArrow} width="40" alt=""/>
-      </Link>
+      <img src={backArrow} width="40" alt="" onClick={() => window.history.back()}/>
 
       <Link to='/favorite'>
         <img src={favorite} width="40" alt=""/>

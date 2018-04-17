@@ -1,9 +1,13 @@
 .optionModal {
   // margin-top: 25vh;
-  // width: 50%;
+  width: 50%;
   // height: 40vh;
   word-break: break-all;
-  background-color:yellow;
+  background-color:#fff;
+}
+
+.ReactModal__Content {
+  background-color: #fff;
 }
 
 .ReactModalPortal > div {
@@ -20,6 +24,7 @@
 
 .ReactModalPortal .ReactModal__Overlay--after-open {
   opacity: 1;
+  
 }
 
 .ReactModalPortal .ReactModal__Overlay--before-close {

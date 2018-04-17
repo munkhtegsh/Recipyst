@@ -42,7 +42,8 @@ button:disabled {
   height: 10vh;
   display: flex;
   justify-content: space-evenly;
-  align-items: center; }
+  align-items: center;
+  background-color: #f1f1f1; }
 
 .header__calendar > a {
   text-decoration: none;
@@ -81,22 +82,66 @@ button:disabled {
 .weekly {
   position: relative;
   margin-top: 18vh;
-  margin-bottom: 10vh;
-  background-color: #493d3d;
-  height: 75vh; }
+  margin-bottom: 10vh; }
 
 .weekly__item {
   display: flex;
-  background-color: #753173;
   margin: 0.5rem 2rem;
   height: calc(100% / 6.8); }
 
+.weekly__image-container {
+  display: flex;
+  align-items: center; }
+
 .weekly__img {
-  height: 100%; }
+  height: 15vh;
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .weekly__food-name {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-left: 2rem;
-  background-color: green; }
+  width: 90%;
+  font-style: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  color: #493d3d;
+  background-color: #FBE9E7; }
+
+.weekly__food-name > a {
+  text-decoration: none;
+  color: #493d3d; }
+
+.weekly__p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase; }
+
+.weekly__calories {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: -1rem;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #757575;
+  right: 0;
+  padding: 0.5rem; }
+
+.weekly > a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500; }
+
+.weekly__delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem; }
 
 .nodata {
   margin-top: 42vh; }
@@ -175,22 +220,38 @@ button:disabled {
   flex-wrap: wrap; }
 
 .quickPicker__item {
-  width: 6rem;
+  width: 5.5rem;
   border: 0.3px solid black;
   margin: 5px; }
 
 .daily {
   margin-top: 18vh;
-  background-color: #493d3d;
   margin-bottom: 9vh; }
 
+.daily__item {
+  position: relative; }
+
+.food-name {
+  font-family: "Bree Serif", serif;
+  position: absolute;
+  left: 4rem;
+  background: rgba(255, 255, 255, 0.4); }
+
 .daily__img {
-  width: 70%; }
+  width: 70%;
+  border-radius: 0.5rem; }
+
+.daily__img:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .daily__p {
   text-align: left;
   padding-left: 40px;
   padding-right: 40px; }
+
+.img_btn {
+  background-color: red;
+  margin: 1rem; }
 
 .nutrients {
   position: relative;
