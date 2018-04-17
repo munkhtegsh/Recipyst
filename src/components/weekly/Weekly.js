@@ -5,7 +5,20 @@ import { connect } from 'react-redux';
 import { getWeeklyItems } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import DeleteForever from 'material-ui/svg-icons/action/delete-forever';
+import IconButton from 'material-ui/IconButton';
+import DeleteForever from 'material-ui/svg-icons/navigation/close';
+
+const styles = {
+  smallIcon: {
+    width: 25,
+    height: 25,
+    color: 'white'
+  },
+  position: {
+    position: "absolute"
+  }
+}
+
 
 class Weekly extends Component {
   constructor(props) {
@@ -31,8 +44,10 @@ class Weekly extends Component {
                 />
               </Link>
 
-              <div className="weekly__food-name">
-                <DeleteForever onClick={() => this.deleteItem(item.id)} className="weekly__delete" />
+              <div className="weekly__food-name"  >
+                <IconButton iconStyle={styles.smallIcon} style={styles.position} className="weekly__delete" >
+                  <DeleteForever onClick={() => this.deleteItem(item.id)} className="weekly__delete-icon" />
+                </IconButton>
                 <Link key={i} to={`/daily/${item.day}`}> {/* why can't put 2 links? */}
                   <p className="weekly__p"> {item.day}. {item.food_name}</p>
                   <p className="weekly__calories">calories: {item.calories}</p>

@@ -1,13 +1,11 @@
 .optionModal {
-  // margin-top: 25vh;
-  width: 50%;
+  margin-top: 10vh;
+  width: 80%;
   // height: 40vh;
   word-break: break-all;
-  background-color:#fff;
-}
-
-.ReactModal__Content {
-  background-color: #fff;
+  // background-color:white;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .ReactModalPortal > div {
@@ -18,16 +16,31 @@
   flex-direction: column;
 }
 
+.optionModal__title {
+  text-align: center;
+}
+
 .ReactModalPortal .ReactModal__Overlay {
   transition: opacity 200ms ease-in-out;
 }
 
 .ReactModalPortal .ReactModal__Overlay--after-open {
   opacity: 1;
-  
 }
 
 .ReactModalPortal .ReactModal__Overlay--before-close {
   opacity: 0;
 }
 
+// .ReactModal__Content {
+//   background-color: red;
+// }
+
+
+// .optionModal {
+//   background-color: blue;
+// }
+
+// .ReactModal__Content--after-open  {
+//   background-color: yellow;
+// }
