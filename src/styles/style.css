@@ -69,9 +69,6 @@ button:disabled {
   position: relative;
   margin-top: 18vh; }
 
-.searchFood__search__btn {
-  width: 10rem; }
-
 .login {
   display: flex;
   height: 40vh;

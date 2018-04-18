@@ -6,6 +6,18 @@ const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
+// // socket
+// const socket = require('socket.io');
+// const io = socket(app.listen(port, () => console.log(`listening on port`)))
+
+// io.on('connectio', (socket) => {
+//   socket.on('emit message', input => {
+//     socket.emit('genrate res', input)
+
+//   })
+// })
+
+
 const app = express();
 
 // massive_____________________________________

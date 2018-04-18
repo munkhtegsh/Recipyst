@@ -5,7 +5,21 @@ import { connect } from 'react-redux';
 import { chosenItem, searched_Food } from '../../ducks/reducer';
 import OptionalModal from '../modal/OptionalModal';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
+
+const styles = {
+  largeIcon: {
+    width: 120,
+    height: 120,
+  },
+  large: {
+    width: 240,
+    height: 240,
+    padding: 30,
+    marginTop: 100
+  },
+};
 
 
 class SearchFood extends Component {
@@ -48,9 +62,10 @@ class SearchFood extends Component {
       <div className="searchFood">
         <input type="text" placeholder="Food name here" onChange={(e) => this.setState({search: e.target.value})}/>
         <button onClick={() => this.getFood()}> Search </button>
-        <button onClick={() => this.toggle()}> options </button>
         { list }
-        <Search className="searchFood__search__btn" iconStyle={{width: 400}} />
+        <IconButton iconStyle={styles.largeIcon} style={styles.large} onClick={() => this.toggle()} >
+          <Search />
+        </IconButton>
         <OptionalModal 
           selectedOption={this.state.selectedOption}
           toggle={() => this.toggle()}
