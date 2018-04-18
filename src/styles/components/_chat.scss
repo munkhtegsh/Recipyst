@@ -1,0 +1,50 @@
+.chatRoom {
+  position: fixed;
+  top: 43vh;
+  right: 0;
+  width: 50%;;
+  height: 20rem;
+  box-sizing: border-box;
+  background-color: black;
+  opacity:0.52;
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+.chatRoom > input {
+  box-sizing: border-box;
+  width: 90%;
+  border-radius: 5px;
+
+}
+
+.chatRoom {
+  ul {
+    overflow: auto;
+    height: 15rem;
+    list-style-type:none;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  li {
+    width: 100%;
+    color: white;
+
+  }
+
+  li:nth-child(odd) {
+    text-align: right;
+    // border: solid black
+  }
+
+  li:nth-child(even) {
+    text-align: left;
+  }
+
+  button {
+    color: white;
+  }
+}

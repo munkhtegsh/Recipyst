@@ -28,6 +28,7 @@ export default (
     <Route path="/favorite/FavoriteNutrients/:id" component={ FavoriteNutrients } />
     <Route path="/favorite/:id" component={ FavoriteItem } />
     <Route path="/favorite" component={ Favorite } />
+    
     <Route path="/recipe/:id" component={ Recipe } />
     <Route path="/searchFood" component={ SearchFood } />
     <Route path="/item" component={ Item } />

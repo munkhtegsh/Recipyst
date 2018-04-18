@@ -5,18 +5,9 @@ const massive = require('massive');
 const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
+const socket = require('socket.io');
 
-// // socket
-// const socket = require('socket.io');
-// const io = socket(app.listen(port, () => console.log(`listening on port`)))
-
-// io.on('connectio', (socket) => {
-//   socket.on('emit message', input => {
-//     socket.emit('genrate res', input)
-
-//   })
-// })
-
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -246,7 +237,22 @@ app.put('/api/cart/:id', (req, res) => {
   // })
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));
+// app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));
 
 
+// socket____________________________________
+const io = socket(app.listen(PORT, () => console.log(`listening on port: ${PORT}`)))
+
+io.on('connection', socket => {
+  socket.on('blast message', input => {
+    console.log('blast');
+    console.log(input);
+    io.sockets.emit('generate response', input);
+  });
+  // socket.on('emit message', input => {
+  //   console.log('emit');
+  //   socket.emit('generate response', input);
+  // });
+});
+
+// app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));

@@ -57,6 +57,9 @@ button:disabled {
   margin-left: 2rem; }
 
 .menu {
+  background-color: red; }
+
+.menuBottom {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -293,3 +296,41 @@ button:disabled {
   text-align: left;
   padding-left: 40px;
   padding-right: 40px; }
+
+.chatRoom {
+  position: fixed;
+  top: 43vh;
+  right: 0;
+  width: 50%;
+  height: 20rem;
+  box-sizing: border-box;
+  background-color: black;
+  opacity: 0.52;
+  color: black;
+  font-weight: bold;
+  font-style: italic; }
+
+.chatRoom > input {
+  box-sizing: border-box;
+  width: 90%;
+  border-radius: 5px; }
+
+.chatRoom ul {
+  overflow: auto;
+  height: 15rem;
+  list-style-type: none;
+  padding: 0.5rem;
+  margin: 0; }
+
+.chatRoom li {
+  width: 100%;
+  color: white; }
+
+.chatRoom li:nth-child(odd) {
+  text-align: right; }
+
+.chatRoom li:nth-child(even) {
+  text-align: left; }
+
+.chatRoom button {
+  color: white; }
