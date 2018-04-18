@@ -39,15 +39,17 @@ class Daily extends Component {
   save = (edit) => {
     const { id } = this.props.match.params;
     let idx = +id;
-    let updatedIngr = this.props.weeklyFoodList[outside].ingredients.map((item, i) => {
-      if (i === edit) {
-        item.text = this.state.itemText;
-        item.weight = this.state.itemWeight;
-      }
-      return item;
-    })
-    axios.put(`/api/weekly/ingr/${idx}`, {updatedIngr});
-    this.setState({itemText: '', itemWeight: '', edit: null});
+    if (this.state.itemText || this.state.item) {
+      let updatedIngr = this.props.weeklyFoodList[outside].ingredients.map((item, i) => {
+        if (i === edit) {
+          item.text = this.state.itemText;
+          item.weight = this.state.itemWeight;
+        }
+        return item;
+      })
+      axios.put(`/api/weekly/ingr/${idx}`, {updatedIngr});
+      this.setState({itemText: '', itemWeight: '', edit: null});
+    }
   }
 
   toBuy = (index) => {
@@ -61,9 +63,6 @@ class Daily extends Component {
       }
     })
   }
-
-
-
 
   render() {
     const { id } = this.props.match.params;
@@ -105,7 +104,8 @@ class Daily extends Component {
           <div key={i} className="ingredients-info">
 
           {/* decide edit or not */}
-          <button onClick={() => this.edit(i)}>edit</button>
+          <button onClick={() => this.edit(i)} className="daily__edit-btn">edit</button>
+          <button onClick={() => this.toBuy(i)}> Cart </button>
             {
               this.state.edit === i
               ?
@@ -120,12 +120,11 @@ class Daily extends Component {
                     onChange={(e) => this.editIngredients(e)}
                   />
                   <button onClick={() => this.save(i)}> Save </button>
-                  <button onClick={() => this.toBuy(i)}> Cart </button>
                 </Paper>
               :
               <Paper style={style} zDepth={1}>
-                <p className="daily__p">- {item.text}</p> 
-                <p className="daily__p">- {parseFloat(item.weight).toFixed(2)} g</p> 
+                <p className="daily__p">- {item.text} {parseFloat(item.weight).toFixed(2)}g</p> 
+               
               </Paper>
             }
           </div>

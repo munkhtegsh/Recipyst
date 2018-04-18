@@ -69,6 +69,9 @@ button:disabled {
   position: relative;
   margin-top: 18vh; }
 
+.searchFood__search__btn {
+  width: 10rem; }
+
 .login {
   display: flex;
   height: 40vh;
@@ -159,14 +162,9 @@ button:disabled {
   padding-right: 40px; }
 
 .favorite {
-  margin-top: 18vh;
-  margin-bottom: 8vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly; }
-
-.favorite__img {
-  width: 10rem; }
+  margin-top: 19vh;
+  margin-bottom: 10vh;
+  height: 100vh; }
 
 .optionModal {
   margin-top: 10vh;
@@ -198,7 +196,29 @@ button:disabled {
   margin-top: 18vh; }
 
 .shoppingCart {
-  margin-top: 18vh; }
+  margin-top: 20vh;
+  margin-right: 3rem;
+  margin-left: 3rem; }
+
+.cart__header {
+  display: flex;
+  justify-content: space-between; }
+
+.cart__items {
+  display: flex; }
+
+.cart__quantity {
+  width: 1rem;
+  margin-left: 1.5rem; }
+
+.cart__id {
+  margin-right: 1rem; }
+
+.cart__ing__q {
+  margin-right: 1rem; }
+
+.cart__bottom {
+  display: flex; }
 
 .quickPicker {
   margin-top: 18vh;
@@ -235,7 +255,7 @@ button:disabled {
   margin: 5px; }
 
 .daily {
-  margin-top: 18vh;
+  margin-top: 22vh;
   margin-bottom: 9vh; }
 
 .daily__item {
@@ -262,9 +282,13 @@ button:disabled {
 .img_btn {
   margin: 1rem; }
 
+.daily__edit-btn {
+  position: absolute;
+  right: 4rem; }
+
 .nutrients {
   position: relative;
-  margin-top: 18vh;
+  margin-top: 20vh;
   margin-bottom: 10vh;
   background-color: #e7f0f4; }
 

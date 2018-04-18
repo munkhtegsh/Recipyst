@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCartItems } from '../../ducks/reducer';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import IconButton from 'material-ui/IconButton';
+import DeleteForever from 'material-ui/svg-icons/action/delete';
+import Edit from 'material-ui/svg-icons/editor/mode-edit';
+
+const styles = {
+  button: {
+    padding: 0,
+  },
+}
 
 class ShoppingCart extends Component {
   constructor() {
@@ -60,24 +70,40 @@ class ShoppingCart extends Component {
   render() {
     let list =  this.props.cart.map((item, i) => {
       return (
-        <div key={item.id}>
-          <input type="text" value={item.name} name="name" onChange={(e) => this.handleInput(e, item.id)}/>
-          <input type="text" value={item.quantity} name="quantity" onChange={(e) => this.handleInput(e, item.id)}/>
-          <button onClick={() => this.updateCart(item.id)}>Edit</button>
-          <button onClick={() => this.deleteItem(item.id)}>Delete</button>
+        <div key={item.id} className="cart__items">
+          <p className="cart__id"> {i + 1}. </p>
+          <input style={styles.button} className="cart__name" type="text" value={item.name} name="name" onChange={(e) => this.handleInput(e, item.id)}/>
+          <input className="cart__quantity" type="text" value={item.quantity} name="quantity" onChange={(e) => this.handleInput(e, item.id)}/>
+          
+          <IconButton style={{padding: '0'}} onClick={() => this.updateCart(item.id)} >
+            <Edit  />
+          </IconButton>
+
+          <IconButton style={{padding: '0'}} className="cart__delete-btn" onClick={() => this.deleteItem(item.id)} >
+            <DeleteForever />
+          </IconButton>
         </div>
       )
     })
 
     return (
-      <div className="shoppingCart">
-      { list }
-      <input name="name" type="text" onChange={(e) => this.setState({name: e.target.value})} placeholder="Item name here"/>
-      <input name="quantity" type="text" onChange={(e) => this.setState({quantity: e.target.value})} placeholder="1"/>
-      <button onClick={() => {this.addItemToCart()}}>
-        Add items
-      </button>
-      </div>
+      <MuiThemeProvider>
+        <div className="shoppingCart">
+          <div className="cart__header">
+            <h5> ID </h5>
+            <h5 className="cart__ing__q"> INGREDIENTS </h5>
+            <h5 className="cart__ing__q"> QUANTITY </h5>
+            </div>
+          { list }
+          <div className="cart__bottom">
+            <input name="name" type="text" onChange={(e) => this.setState({name: e.target.value})} placeholder="Item name here"/>
+              <input className="cart__quantity" name="quantity" type="text" onChange={(e) => this.setState({quantity: e.target.value})} placeholder="1"/>
+              <button onClick={() => {this.addItemToCart()}}>
+              Add items
+            </button>
+          </div>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }

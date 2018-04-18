@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { chosenItem, searched_Food } from '../../ducks/reducer';
 import OptionalModal from '../modal/OptionalModal';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Search from 'material-ui/svg-icons/action/search';
+
 
 class SearchFood extends Component {
   constructor(props) {
@@ -41,17 +44,20 @@ class SearchFood extends Component {
     })
     
     return (
+      <MuiThemeProvider>
       <div className="searchFood">
         <input type="text" placeholder="Food name here" onChange={(e) => this.setState({search: e.target.value})}/>
         <button onClick={() => this.getFood()}> Search </button>
         <button onClick={() => this.toggle()}> options </button>
         { list }
+        <Search className="searchFood__search__btn" iconStyle={{width: 400}} />
         <OptionalModal 
           selectedOption={this.state.selectedOption}
           toggle={() => this.toggle()}
           getFood={(queries) => this.getFood(queries)}
         />
       </div>
+      </MuiThemeProvider>
     )
   }
 }

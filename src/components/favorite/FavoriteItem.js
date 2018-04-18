@@ -27,7 +27,7 @@ class FavoriteItem extends React.Component{
       return (
         <div key={i}>
           <Paper style={style} zDepth={1}>
-            <p className="daily__p"> {item.text} {item.weight} </p>  
+            <p className="daily__p"> {item.text} {parseFloat(item.weight).toFixed(2)}g </p>  
           </Paper>
         </div>
       )
@@ -44,7 +44,7 @@ class FavoriteItem extends React.Component{
               </Link>
               <RaisedButton  className="img_btn" target="_blank" label="Instructions" href={favFood.url}></RaisedButton>
               <Link to={`/favorite/FavoriteNutrients/${id}`}> 
-                <RaisedButton className="img_btn" label="Nutrein info" href={parseFloat(favFood.url).toFixed(2)}></RaisedButton> 
+                <RaisedButton className="img_btn" label="Nutrein info" href={favFood.url}></RaisedButton> 
               </Link>
 
 

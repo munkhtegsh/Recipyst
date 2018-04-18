@@ -1,5 +1,5 @@
 .daily {
-  margin-top: 18vh;
+  margin-top: 22vh;
   // background-color: #493d3d;
   margin-bottom: 9vh;
 }
@@ -40,6 +40,10 @@
   margin: 1rem;
 }
 
+.daily__edit-btn {
+  position: absolute;
+  right: 4rem;
+}
 // .weekly {
 //   display: flex;
 //   justify-content: center;

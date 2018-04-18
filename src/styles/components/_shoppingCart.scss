@@ -1,4 +1,31 @@
 .shoppingCart {
-  margin-top: 18vh;
+  margin-top: 20vh;
+  margin-right: 3rem;
+  margin-left: 3rem;
 }
 
+.cart__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__items {
+  display: flex;
+}
+
+.cart__quantity {
+  width: 1rem;
+  margin-left: 1.5rem;
+}
+
+.cart__id {
+  margin-right: 1rem;
+}
+
+.cart__ing__q {
+  margin-right: 1rem;
+}
+
+.cart__bottom {
+  display: flex;
+}
