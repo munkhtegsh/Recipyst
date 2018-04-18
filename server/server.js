@@ -123,6 +123,19 @@ app.delete('/api/weekly/:id', (req, res) => {
   })
 })
 
+// updating ingredients of food
+app.put('/api/weekly/ingr/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  let { updatedIngr } = req.body;
+  let updatedItemArr = JSON.stringify(updatedIngr); //////////////////////
+  if (updatedIngr) {
+    db.updateIngrWeekly([updatedItemArr, id, req.user]).then(response => {
+      res.status(200).send(response);
+    })
+  }
+})
+
 //=============================================================//
 //                        FAVORITE FOOD                        //
 //=============================================================//

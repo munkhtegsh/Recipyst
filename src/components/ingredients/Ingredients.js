@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getWeeklyItems } from '../../ducks/reducer';
+import { getWeeklyItems, getFavoriteItem } from '../../ducks/reducer';
 import axios from 'axios';
 
 class Ingredients extends Component {
@@ -23,7 +23,7 @@ class Ingredients extends Component {
 
   addToFavoriteList = () => {
     axios.post('/api/favorite', this.props.chosenItem).then(res => {
-      return res.data[0];
+      this.props.getFavoriteItem();
     });
   }
 
@@ -67,7 +67,7 @@ class Ingredients extends Component {
             <option value="7">7</option>
           </select>
         </div>
-        <button onClick={() => this.addToFavoriteList()}> Favorite </button>
+        <Link to="/favorite"><button onClick={() => this.addToFavoriteList()}> Favorite </button></Link>
       </div>
       )
   }
@@ -80,4 +80,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getWeeklyItems })(Ingredients);
+export default connect(mapStateToProps, { getWeeklyItems, getFavoriteItem })(Ingredients);
