@@ -67,7 +67,7 @@ export default (props) => (
         />
       </Link>
 
-      <a href="http://localhost:4000/auth/logout"> 
+      <a href={process.env.REACT_APP_LOGOUT}> 
         <FlatButton label="Logout" primary={true} fullWidth={true} 
           onClick={() => props.toggleClick()}
           style={{color: "#424242"}}
@@ -76,3 +76,4 @@ export default (props) => (
     </Drawer>
   </div>
 );
+

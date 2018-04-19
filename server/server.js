@@ -7,9 +7,11 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const socket = require('socket.io');
 
+
 const PORT = process.env.PORT || 4000;
 
 const app = express();
+app.use( express.static( `${__dirname}./../build` ) );
 
 // massive_____________________________________
 massive(process.env.SERVER_SCRIPT).then(db => {
@@ -57,8 +59,8 @@ passport.deserializeUser((id, done) => {
 });
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/home',
-  failureRedirect: 'http://localhost:3000/'
+  successRedirect: process.env.SUCCSESS_REDIRECT,
+  failureRedirect: process.env.FAILURE_REDIRECT
 }));
 
 // getUserInfo
@@ -76,7 +78,7 @@ app.get('/auth', passport.authenticate('auth0'));
 // Logout
 app.get('/auth/logout', (req, res) => {
   req.logout();
-  res.redirect('http://localhost:3000/')
+  res.redirect(process.env.FAILURE_REDIRECT)
 });
 
 //=============================================================//
