@@ -25,10 +25,10 @@ export default (
     <Route path="/weekly" component={ Weekly } />
     <Route path="/daily/di/:id" component={ DailyNutrients } />
     <Route path="/daily/:id" component={ Daily } /> 
-    <Route path="/favorite/FavoriteNutrients/:id" component={ FavoriteNutrients } />
-    <Route path="/favorite/:id" component={ FavoriteItem } />
+    <Route path="/favorite/FavoriteNutrients/:userid/:id" component={ FavoriteNutrients } /> {/* added userid*/}
+    <Route path="/favorite/:userid/:id" component={ FavoriteItem } /> {/* added userid*/}
     <Route path="/favorite" component={ Favorite } />
-    
+
     <Route path="/recipe/:id" component={ Recipe } />
     <Route path="/searchFood" component={ SearchFood } />
     <Route path="/item" component={ Item } />

@@ -1,4 +1,5 @@
 .favorite {
+  position: relative;
   margin-top: 19vh;
   margin-bottom: 10vh;
   height: 100vh;
@@ -32,3 +33,8 @@
 //   position: absolute;
 //   top: 0;
 // }
+
+.daily__share {
+  position: absolute;
+  right: 1rem;
+}

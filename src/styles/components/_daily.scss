@@ -8,10 +8,10 @@
   position: relative;
 }
 
-// .daily__img-container {
-//   position: relative;
-// }
-
+.ingredients-info {
+  position: relative;
+  margin: 0 auto
+}
 .food-name {
   font-family: $bree-font;
   position: absolute;
@@ -43,11 +43,6 @@
 .daily__edit-btn {
   position: absolute;
   right: 4rem;
+
 }
-// .weekly {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-  
-// }
 

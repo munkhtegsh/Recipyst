@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
+import IconButton from 'material-ui/IconButton';
+import AddToCart from 'material-ui/svg-icons/editor/mode-edit';
+
 
 let outside;
 const style = {
@@ -48,7 +51,7 @@ class Daily extends Component {
         return item;
       })
       axios.put(`/api/weekly/ingr/${idx}`, {updatedIngr});
-      this.setState({itemText: '', itemWeight: '', edit: null});
+      this.setState({itemText: '', itemWeight: '', edit: false});
     }
   }
 
@@ -103,9 +106,8 @@ class Daily extends Component {
         return (
           <div key={i} className="ingredients-info">
 
-          {/* decide edit or not */}
-          <button onClick={() => this.edit(i)} className="daily__edit-btn">edit</button>
-          <button onClick={() => this.toBuy(i)}> Cart </button>
+            <AddToCart onClick={() => this.edit(i)} className="daily__edit-btn" />
+   
             {
               this.state.edit === i
               ?
@@ -123,7 +125,7 @@ class Daily extends Component {
                 </Paper>
               :
               <Paper style={style} zDepth={1}>
-                <p className="daily__p">- {item.text} {parseFloat(item.weight).toFixed(2)}g</p> 
+                <p className="daily__p" onClick={() => this.toBuy(i)}>- {item.text} {parseFloat(item.weight).toFixed(2)}g</p> 
                
               </Paper>
             }

@@ -162,9 +162,14 @@ button:disabled {
   padding-right: 40px; }
 
 .favorite {
+  position: relative;
   margin-top: 19vh;
   margin-bottom: 10vh;
   height: 100vh; }
+
+.daily__share {
+  position: absolute;
+  right: 1rem; }
 
 .optionModal {
   margin-top: 10vh;
@@ -260,6 +265,10 @@ button:disabled {
 
 .daily__item {
   position: relative; }
+
+.ingredients-info {
+  position: relative;
+  margin: 0 auto; }
 
 .food-name {
   font-family: "Bree Serif", serif;

@@ -34,7 +34,7 @@ class Favorite extends Component {
   }
 
   deleteItem = (id) => {
-    axios.delete(`/api/favorite/${id}`);
+    axios.delete(`/api/favorite/${id}`); //left it alone
     this.props.getFavoriteItem();
   }
 
@@ -59,7 +59,7 @@ class Favorite extends Component {
                   subtitle={<span>by <b>Susana</b></span>}
                   actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
                 >
-                <Link to={`/favorite/${id}`} key={food.id}>
+                <Link to={`/favorite/${this.props.userid}/${id}`} key={food.id}>
 
                   <img src={food.food_img} />
                 </Link>
@@ -79,7 +79,8 @@ class Favorite extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteFoodList: state.favoriteFoodList
+    favoriteFoodList: state.favoriteFoodList,
+    userid: state.userInfo.id //getting userid from redux
   }
 }
 

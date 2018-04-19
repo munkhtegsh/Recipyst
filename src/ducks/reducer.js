@@ -12,7 +12,8 @@ const initialState = {
   searchedFood: [],
   weeklyFoodList: [],
   favoriteFoodList: [],
-  cart: []
+  cart: [],
+  shared: {}
 }
 
 // actionTypes
@@ -22,10 +23,10 @@ const GET_USER_INFO = "GET_USER_INFO";
 const GET_WEEKLY = "GET_WEEKLY";
 const GET_FAVORITE = "GET_FAVORITE";
 const GET_CART_ITEMS = "GET_CART_ITEMS";
+const SHARE_FOOD = "SHARE_FOOD";
 
 // reducer
 const reducer = (state = initialState, action) => {
-
   switch(action.type) {
     case CHOSEN_ITEM:
       return Object.assign({}, state, {chosenItem: action.payload});
@@ -38,7 +39,9 @@ const reducer = (state = initialState, action) => {
     case GET_FAVORITE + '_FULFILLED':
       return {...state, favoriteFoodList: action.payload};
     case GET_CART_ITEMS + '_FULFILLED':
-      return {...state, cart: action.payload}
+      return {...state, cart: action.payload};
+    case SHARE_FOOD:
+      return {...state, shared: action.payload}
     default:
       return state;
   }
@@ -109,6 +112,13 @@ export const getCartItems = () => {
   return {
     type: GET_CART_ITEMS,
     payload: items
+  }
+}
+
+export const shareFood = (food) => {
+  return {
+    type: SHARE_FOOD,
+    payload: food
   }
 }
 
