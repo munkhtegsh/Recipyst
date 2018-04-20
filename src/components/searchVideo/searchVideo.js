@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import YoutubeSearch from 'youtube-search';
+import Iframe from 'react-iframe';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const style = {
+  margin: 12,
+
+};
 
 class SearchVideo extends Component {
   constructor() {
@@ -33,16 +42,33 @@ class SearchVideo extends Component {
 
   render() {
     return (
+      <MuiThemeProvider>
       <div className="searchVideo">
-        <input type="text" placeholder="Search" onChange={this.handleChange.bind(this)}/>
-        <button onClick={this.handleButton.bind(this)}>search</button>
-        <h4> { this.state.title } </h4>
-        <object height="60vh" width="80%"> {/* Make sure that the height and width value in the iframe, object and embed element the same is.*/}
-          <iframe  style={{border: 0, width: "80%", height: "60vh"}}
-            src={`https://www.youtube.com/embed/${this.state.id}`}>
-          </iframe>
-        </object>
+        <TextField
+          floatingLabelFocusStyle={{color: '#1db954'}}
+          underlineFocusStyle={{borderColor:'#1db954'}}
+
+          fullWidth={false}
+          floatingLabelText="Search food"
+          onChange={this.handleChange.bind(this)}
+        />
+        <RaisedButton label="Search" style={style} 
+        onClick={this.handleButton.bind(this)}
+       />
+
+        <Iframe 
+          url={`https://www.youtube.com/embed/${this.state.id}`}
+          width="100%"
+          height="450px"
+          id="myId"
+          className="searchVideo__iframe"
+          display="initial"
+          position="relative"
+          allowFullScreen
+        />
+
       </div>
+      </MuiThemeProvider>
     )
   }
 }

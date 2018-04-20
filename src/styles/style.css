@@ -198,7 +198,8 @@ button:disabled {
   opacity: 0; }
 
 .searchVideo {
-  margin-top: 18vh; }
+  margin-top: 18vh;
+  width: 100%; }
 
 .shoppingCart {
   margin-top: 20vh;
