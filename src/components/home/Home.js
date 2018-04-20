@@ -18,13 +18,13 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <Link to='/weekly'> Dinner tonight </Link>
-        <Link to='/favorite'> Favorite food </Link>
+      <div className="home">
+        <Link className="home__enter" to='/weekly'> RECIPyST </Link>
+        {/* <Link to='/favorite'> Favorite food </Link>
         <Link to='/searchFood'> Search food </Link>
         <Link to='/searchVideo'> Search Video </Link>
         <Link to='/timer'> Timer </Link>
-        <Link to='/shoppingList'> Shopping List </Link>
+        <Link to='/shoppingList'> Shopping List </Link> */}
       </div>
     )
   }

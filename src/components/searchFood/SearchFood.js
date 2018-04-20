@@ -7,6 +7,9 @@ import OptionalModal from '../modal/OptionalModal';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 const styles = {
   largeIcon: {
@@ -20,6 +23,11 @@ const styles = {
     marginTop: 100
   },
 };
+
+const style = {
+  margin: 12,
+};
+
 
 
 class SearchFood extends Component {
@@ -59,19 +67,29 @@ class SearchFood extends Component {
     
     return (
       <MuiThemeProvider>
-      <div className="searchFood">
-        <input type="text" placeholder="Food name here" onChange={(e) => this.setState({search: e.target.value})}/>
-        <button onClick={() => this.getFood()}> Search </button>
-        { list }
-        <IconButton iconStyle={styles.largeIcon} style={styles.large} onClick={() => this.toggle()} >
-          <Search />
-        </IconButton>
-        <OptionalModal 
-          selectedOption={this.state.selectedOption}
-          toggle={() => this.toggle()}
-          getFood={(queries) => this.getFood(queries)}
-        />
-      </div>
+        <div className="searchFood">
+          <TextField
+            floatingLabelFocusStyle={{color: '#1db954'}}
+            underlineFocusStyle={{borderColor:'#1db954'}}
+            fullWidth={false}
+            floatingLabelText="Search food"
+            onChange={(e) => this.setState({search: e.target.value})}
+          />
+
+          <RaisedButton label="Search" style={style} 
+            onClick={() => this.getFood()}
+          />
+
+            { list }
+            <IconButton iconStyle={styles.largeIcon} style={styles.large} onClick={() => this.toggle()} >
+              <Search />
+            </IconButton>
+            <OptionalModal 
+              selectedOption={this.state.selectedOption}
+              toggle={() => this.toggle()}
+              getFood={(queries) => this.getFood(queries)}
+            />
+        </div>
       </MuiThemeProvider>
     )
   }

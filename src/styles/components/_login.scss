@@ -1,10 +1,61 @@
 .login {
   display: flex;
-  height: 40vh;
-  width: 60%;
-  margin: 0 auto;
-  background-color: darkorchid;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: #1db954; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #1db954, #8DC26F);
+  background: -moz-linear-gradient(right, #1db954, #8DC26F);
+  background: -o-linear-gradient(right, #1db954, #8DC26F);
+  background: linear-gradient(to left, #1db954, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+  height: 100vh;
 }
+
+.login_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #FFFFFF;
+  margin: 0 auto 100px;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.login_container > input {
+  font-family: "Roboto", sans-serif;
+  background: #f2f2f2;
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+
+.login__button {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  outline: 0;
+  background: #1db954;
+  border-radius: 3px;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.login__button button:hover,.login__button button:active,.login__button button:focus {
+  color: #1a1a1a;
+}
+
+

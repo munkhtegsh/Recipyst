@@ -1,3 +1,9 @@
-.item {
+.item > p {
+  text-decoration: none; // why not working?
+}
 
+.item__colories {
+  font-style: normal;
+  color: black;
+  margin-top: 0.2rem;
 }

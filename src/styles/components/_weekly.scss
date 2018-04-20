@@ -1,7 +1,7 @@
 
 .weekly {
   position: relative;
-  margin-top: 18vh;
+  margin-top: 22vh;
   margin-bottom: 10vh;
   // background-color:rgb(73, 61, 61);
   // height: 75vh;
@@ -40,7 +40,10 @@
   padding-right: 1rem;
   box-sizing: border-box;
   color: rgb(73, 61, 61);
-  background-color:#FBE9E7;
+  // background-color:#FBE9E7;
+  background: linear-gradient(to bottom, #fafafa 0%, #fafafa 10%,#fafafa 100%);
+
+
 }
 
 .weekly__food-name > a {

@@ -7,7 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
   margin: 12,
-
 };
 
 class SearchVideo extends Component {

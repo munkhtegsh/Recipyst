@@ -12,7 +12,7 @@ const styles = {
   smallIcon: {
     width: 25,
     height: 25,
-    color: 'white'
+    color: 'grey'
   },
   position: {
     position: "absolute"

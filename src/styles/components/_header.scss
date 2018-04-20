@@ -1,4 +1,12 @@
 .header {
+  background: #1db954; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #1db954, #8DC26F);
+  background: -moz-linear-gradient(right, #1db954, #8DC26F);
+  background: -o-linear-gradient(right, #1db954, #8DC26F);
+  background: linear-gradient(to left, #1db954, #8DC26F);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+  height: 18vh;
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -6,7 +14,7 @@
 }
 
 .header__top_menu {
-  background-color:#1db954; //#5BCC20
+
   height: 200px; // why not working? 
   width: 100%;
   display: flex;
@@ -16,7 +24,7 @@
 }
 
 .header__home__grocery {
-  background-color:#1db954;
+
   height: 100%;
   width: 40%;
   display: flex;
