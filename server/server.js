@@ -239,9 +239,6 @@ app.put('/api/cart/:id', (req, res) => {
   // })
 });
 
-// app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));
-
-
 // socket____________________________________
 const io = socket(app.listen(PORT, () => console.log(`listening on port: ${PORT}`)))
 

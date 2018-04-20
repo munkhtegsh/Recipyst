@@ -17,7 +17,9 @@ class ChatRoom extends Component {
 
     socket.on('generate response', data => {
       const chat = [...this.state.chat, data]; 
+      console.log(data)
       this.setState({ chat })
+
     })
   }
 
@@ -41,9 +43,11 @@ class ChatRoom extends Component {
   }
 
   share = () => {
-    let link = {}
-    let chat = [...chat, this.props.shared];
+    let chat = [...this.state.chat, this.props.shared];
     this.setState({ chat });
+    socket.emit('blast message', this.props.shared);
+
+    // this.sendMessage(this.props.shared)
   }
 
   render() {
@@ -53,7 +57,7 @@ class ChatRoom extends Component {
       if (typeof el === 'object') {
         return <Link key={el.id} to={el.link}>Link</Link>
       } else {
-        return <li key={el}>{el}</li>
+        return <li key={i}>{el}</li>
       }
     }) 
 
