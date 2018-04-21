@@ -69,8 +69,8 @@ class SearchFood extends Component {
       <MuiThemeProvider>
         <div className="searchFood">
           <TextField
-            floatingLabelFocusStyle={{color: '#1db954'}}
-            underlineFocusStyle={{borderColor:'#1db954'}}
+            floatingLabelFocusStyle={{color: 'white'}}
+            underlineFocusStyle={{borderColor:'white'}}
             fullWidth={false}
             floatingLabelText="Search food"
             onChange={(e) => this.setState({search: e.target.value})}

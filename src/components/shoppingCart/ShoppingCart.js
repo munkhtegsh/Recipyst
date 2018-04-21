@@ -6,12 +6,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import IconButton from 'material-ui/IconButton';
 import DeleteForever from 'material-ui/svg-icons/action/delete';
 import Edit from 'material-ui/svg-icons/editor/mode-edit';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   button: {
     padding: 0,
   },
 }
+
+
 
 class ShoppingCart extends Component {
   constructor() {
@@ -88,7 +92,8 @@ class ShoppingCart extends Component {
 
     return (
       <MuiThemeProvider>
-        <div className="shoppingCart">
+        <div className="shoppingContainer">
+          <div className="shoppingCart">
           <div className="cart__header">
             <h5> ID </h5>
             <h5 className="cart__ing__q"> INGREDIENTS </h5>
@@ -96,12 +101,32 @@ class ShoppingCart extends Component {
             </div>
           { list }
           <div className="cart__bottom">
-            <input name="name" type="text" onChange={(e) => this.setState({name: e.target.value})} placeholder="Item name here"/>
-              <input className="cart__quantity" name="quantity" type="text" onChange={(e) => this.setState({quantity: e.target.value})} placeholder="1"/>
-              <button onClick={() => {this.addItemToCart()}}>
-              Add items
-            </button>
+
+
+          <TextField
+            style={{width: '50%', marginRight: '5%'}}
+              floatingLabelFocusStyle={{color: '#1db954'}}
+              underlineFocusStyle={{borderColor:'#1db954'}}
+              fullWidth={false}
+              floatingLabelText="Type item name ..."
+              onChange={(e) => this.setState({name: e.target.value})}
+            />
+
+
+          <TextField
+            style={{width: '10%', marginRight: '5%'}}
+            floatingLabelFocusStyle={{color: '#1db954'}}
+            underlineFocusStyle={{borderColor:'#1db954'}}
+            fullWidth={false}
+            floatingLabelText="Qty"
+            onChange={(e) => this.setState({quantity: e.target.value})}
+            />
+
+          <RaisedButton label="Add" style={{ marginTop: '10%'}}
+            onClick={() => {this.addItemToCart()}}       
+            />
           </div>
+        </div>
         </div>
       </MuiThemeProvider>
     )
@@ -114,4 +139,7 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(mapStateToProps, { getCartItems })(ShoppingCart);
+
+
+
 

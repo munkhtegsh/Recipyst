@@ -28,7 +28,7 @@
     }
 }
 
-.chatRoom__footer > input, input[type=text] {
+.chatRoom__footer > input[type=text] {
   box-sizing: border-box;
   width: 30%;
   border-radius: 5px;
@@ -38,6 +38,7 @@
   padding: 3px;
   border: 0;
   outline: none;
+  word-break: break-all;
 
 }
 
@@ -62,6 +63,8 @@
     font-size: 0.9rem;
     box-sizing: border-box;
     padding: 3px;
+    height: auto;
+    word-break: break-all;
 
   }
 
@@ -73,9 +76,7 @@
     background-color: #1db954;
     color: white;
     padding-right: 8px;
-
-
-    
+    box-sizing: border-box;
     // border: solid black
   }
 
@@ -86,6 +87,7 @@
     margin-bottom: 9px;
     background-color: #efeeee;
     padding-left: 8px;
+    box-sizing: border-box;
 
   }
 

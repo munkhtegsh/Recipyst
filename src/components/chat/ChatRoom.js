@@ -23,6 +23,18 @@ class ChatRoom extends Component {
     })
   }
 
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+  
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+  
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   sendMessage = (message, type) => {
     // console.log('message', message);
     socket.emit(`${type} message` , message)
@@ -55,11 +67,7 @@ class ChatRoom extends Component {
   }
 
   render() {
-    // check is it obj or text ?
-      // if object put it int Link tag
-      console.log(this.props.shared)
     const chat = this.state.chat.map((el, i) => {
-      console.log(el)
       if (typeof el === 'object') {
         return <li><Link key={el.id} to={el.link}>Link</Link></li>
       } else {
@@ -68,15 +76,20 @@ class ChatRoom extends Component {
     }) 
 
     return (
-      <div className="chatRoom">
+      <div className="chatRoom" ref={(el) => { this.messagesContainer = el; }}>
         <div className="chatRoom__header" onClick={() => this.props.toggle()}> 
           <p>__</p>
         </div>
         <ul>
+
           { chat }
+          <div style={{ float:"left", clear: "both" }}
+            ref={(el) => { this.messagesEnd = el; }}>
+           </div>
         </ul>
+        
         <div className="chatRoom__footer">
-          <input placeHolder="Type here..." type="text" onKeyPress={(e) => this.createNew(e)}/>
+          <input placeholder="Type here..." type="text" onKeyPress={(e) => this.createNew(e)}/>
           <button onClick={() => this.share()}> SHARE </button>
         </div>
         

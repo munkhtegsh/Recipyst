@@ -1,7 +1,13 @@
+.shoppingContainer {
+  background-color: #fff;
+  height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 5vh;
+}
+
 .shoppingCart {
-  margin-top: 20vh;
-  margin-right: 3rem;
-  margin-left: 3rem;
+  margin-top: 14vh;
+  padding: 2rem;
 }
 
 .cart__header {
@@ -14,8 +20,9 @@
 }
 
 .cart__quantity {
-  width: 1rem;
+  width: 1.2rem;
   margin-left: 1.5rem;
+  outline: none;
 }
 
 .cart__id {
@@ -28,4 +35,18 @@
 
 .cart__bottom {
   display: flex;
+}
+
+.cart__name {
+  width: 70%;
+  border: 0;
+  outline: none;
+}
+
+.shoppingContainer__add-input {
+  width: 70%;
+  outline: none;
+  background-color: #1db954;
+  color: white;
+
 }

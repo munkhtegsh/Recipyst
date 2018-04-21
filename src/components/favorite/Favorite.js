@@ -43,7 +43,11 @@ class Favorite extends Component {
       <MuiThemeProvider>
       <div style={styles.root} className="favorite">
 
-      <GridList
+
+      {
+        this.props.favoriteFoodList.length !== 0
+        ?
+        <GridList
         cellHeight={180}
         style={styles.gridList}
         style={{height: '100vh'}}
@@ -64,12 +68,15 @@ class Favorite extends Component {
                   <img src={food.food_img} />
                 </Link>
                 </GridTile>
-              
-      
             )
           })
         }
         </GridList>
+        :
+        "YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"
+      }
+
+    
         </div>
 
       </MuiThemeProvider>

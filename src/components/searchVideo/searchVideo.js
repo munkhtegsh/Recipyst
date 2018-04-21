@@ -44,8 +44,8 @@ class SearchVideo extends Component {
       <MuiThemeProvider>
       <div className="searchVideo">
         <TextField
-          floatingLabelFocusStyle={{color: '#1db954'}}
-          underlineFocusStyle={{borderColor:'#1db954'}}
+          floatingLabelFocusStyle={{color: 'white'}}
+          underlineFocusStyle={{borderColor:'white'}}
 
           fullWidth={false}
           floatingLabelText="Search food"

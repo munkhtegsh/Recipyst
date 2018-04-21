@@ -93,8 +93,8 @@ class QuickPicker extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-      <div>
+      <MuiThemeProvider className="Mui-Quick">
+      <div style={{backgroundColor: 'white'}}>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}

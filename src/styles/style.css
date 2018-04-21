@@ -262,10 +262,15 @@ button:disabled {
   margin-top: 18vh;
   width: 100%; }
 
+.shoppingContainer {
+  background-color: #fff;
+  height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 5vh; }
+
 .shoppingCart {
-  margin-top: 20vh;
-  margin-right: 3rem;
-  margin-left: 3rem; }
+  margin-top: 14vh;
+  padding: 2rem; }
 
 .cart__header {
   display: flex;
@@ -275,8 +280,9 @@ button:disabled {
   display: flex; }
 
 .cart__quantity {
-  width: 1rem;
-  margin-left: 1.5rem; }
+  width: 1.2rem;
+  margin-left: 1.5rem;
+  outline: none; }
 
 .cart__id {
   margin-right: 1rem; }
@@ -287,13 +293,25 @@ button:disabled {
 .cart__bottom {
   display: flex; }
 
+.cart__name {
+  width: 70%;
+  border: 0;
+  outline: none; }
+
+.shoppingContainer__add-input {
+  width: 70%;
+  outline: none;
+  background-color: #1db954;
+  color: white; }
+
 .quickPicker {
   margin-top: 18vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 9vh; }
+  margin-bottom: 9vh;
+  background-color: white; }
 
 .quickPicker__drinks {
   display: flex;
@@ -396,7 +414,7 @@ button:disabled {
     margin-left: 10px;
     margin-top: 0; }
 
-.chatRoom__footer > input, input[type=text] {
+.chatRoom__footer > input[type=text] {
   box-sizing: border-box;
   width: 30%;
   border-radius: 5px;
@@ -405,7 +423,8 @@ button:disabled {
   font-size: 0.7rem;
   padding: 3px;
   border: 0;
-  outline: none; }
+  outline: none;
+  word-break: break-all; }
 
 .chatRoom ul {
   overflow: auto;
@@ -422,7 +441,9 @@ button:disabled {
   font-weight: 400;
   font-size: 0.9rem;
   box-sizing: border-box;
-  padding: 3px; }
+  padding: 3px;
+  height: auto;
+  word-break: break-all; }
 
 .chatRoom li:nth-child(odd) {
   text-align: right;
@@ -431,7 +452,8 @@ button:disabled {
   margin-bottom: 9px;
   background-color: #1db954;
   color: white;
-  padding-right: 8px; }
+  padding-right: 8px;
+  box-sizing: border-box; }
 
 .chatRoom li:nth-child(even) {
   text-align: left;
@@ -439,7 +461,8 @@ button:disabled {
   float: left;
   margin-bottom: 9px;
   background-color: #efeeee;
-  padding-left: 8px; }
+  padding-left: 8px;
+  box-sizing: border-box; }
 
 .chatRoom button {
   color: black;

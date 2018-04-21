@@ -62,7 +62,13 @@ class Weekly extends Component {
     return (
       <MuiThemeProvider>
         <div className='weekly'>
-          { list }
+          {
+            this.props.weeklyFoodList.length !== 0
+            ?
+            { list }
+            :
+            "YOU HAVEN'T CHOOSE ANY FOOD THIS WEEK!"
+          }
         </div>
       </MuiThemeProvider>
     )
