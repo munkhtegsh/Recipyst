@@ -15,13 +15,17 @@ class Menu extends Component {
     }
   }
 
+  toggle = () => {
+    this.setState({ toggle: !this.state.toggle })
+  }
+
   render() {
     return (
       <div className="menu">
         {
           !!this.state.toggle
           ?
-          <ChatRoom />
+          <ChatRoom toggle={() => this.toggle()}/>
           :
           null
         }
@@ -39,7 +43,7 @@ class Menu extends Component {
           <Link to='/weekly'>
             <img src={weekly} width="40" alt=""/>
           </Link>
-          <button onClick={() => this.setState({ toggle: !this.state.toggle })}> Chat </button>
+          <button onClick={() => this.toggle()}> Chat </button>
         </div>
       </div>
     )

@@ -26,6 +26,7 @@ class FavoriteItem extends React.Component{
     let { id } = this.props.match.params;
     let favFood = this.props.favoriteFoodList[id]
     this.props.shareFood({...favFood, link: `/favorite/${this.props.userid}/${id}`})
+    
   }
 
   render() {

@@ -13,7 +13,8 @@ const initialState = {
   weeklyFoodList: [],
   favoriteFoodList: [],
   cart: [],
-  shared: {}
+  shared: {},
+  currentNutrients: []
 }
 
 // actionTypes
@@ -24,6 +25,8 @@ const GET_WEEKLY = "GET_WEEKLY";
 const GET_FAVORITE = "GET_FAVORITE";
 const GET_CART_ITEMS = "GET_CART_ITEMS";
 const SHARE_FOOD = "SHARE_FOOD";
+const CHANGE_TO_EMPTY= "CHANGE_TO_EMPTY";
+const GET_CURRENT_NUTRIENTS = "GET_CURRENT_NUTRIENTS";
 
 // reducer
 const reducer = (state = initialState, action) => {
@@ -41,7 +44,11 @@ const reducer = (state = initialState, action) => {
     case GET_CART_ITEMS + '_FULFILLED':
       return {...state, cart: action.payload};
     case SHARE_FOOD:
-      return {...state, shared: action.payload}
+      return {...state, shared: action.payload};
+    case CHANGE_TO_EMPTY: 
+      return {...state, shared: ''};
+    case GET_CURRENT_NUTRIENTS:
+      return {...state, currentNutrients: action.payload}
     default:
       return state;
   }
@@ -119,6 +126,19 @@ export const shareFood = (food) => {
   return {
     type: SHARE_FOOD,
     payload: food
+  }
+}
+
+export const changeToEmpty = () => {
+  return {
+    type: CHANGE_TO_EMPTY,
+  }
+}
+
+export const getCurrentNutrients = (nutrients) => {
+  return {
+    type: GET_CURRENT_NUTRIENTS,
+    payload: nutrients
   }
 }
 

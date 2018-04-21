@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getCurrentNutrients } from '../../ducks/reducer';
+import Graphic from './chart/Graphic';
 import _ from 'underscore';
 
 class FavoriteNutrients extends Component {
@@ -30,7 +32,8 @@ class FavoriteNutrients extends Component {
         for(let key in obj) {
         if(item === key) {
           let tpl = _.template("<%= label %> <%= quantity %> <%= unit %> ")
-          nutreintList.push(tpl({label: obj[key].label, quantity: obj[key].quantity.toFixed(2), unit: obj[key].unit}));
+          let name = obj[key].label.split(' ').join('');
+          nutreintList.push(tpl({label: name, quantity: obj[key].quantity.toFixed(2), unit: obj[key].unit}));
         }
       }
     })
@@ -40,6 +43,7 @@ class FavoriteNutrients extends Component {
 
   render() {
     let { id } = this.props.match.params;
+    let currentNtr = []
     let list = this.state.nutreintList.map((item, i) => {
       return (
         <div key={i}>
@@ -48,12 +52,15 @@ class FavoriteNutrients extends Component {
       )
     })
 
+    this.props.getCurrentNutrients(this.state.nutreintList);
+
     return (
       <div>
         <div className="nutrients">
         <button onClick={() => this.props.history.goBack()}>x</button>
           <div className="nutrients__p">
             { list }
+            <Graphic />
           </div>
         </div>
       </div>
@@ -67,4 +74,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(FavoriteNutrients);
+export default connect(mapStateToProps, { getCurrentNutrients })(FavoriteNutrients);

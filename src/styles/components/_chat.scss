@@ -1,24 +1,47 @@
 .chatRoom {
   position: fixed;
-  top: 43vh;
+  bottom: 6.7vh;
   right: 0;
   width: 50%;;
-  height: 20rem;
+  height: 19.2rem;
   box-sizing: border-box;
-  background-color: black;
-  opacity:0.52;
+  background-color: white;
+  opacity: 9;
   color: black;
   font-weight: bold;
   font-style: italic;
+  padding: 3px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding-bottom: 0;
 
 }
 
-.chatRoom > input {
+.chatRoom__header {
+  width: 100%;
+  height: 20px;
+  margin-top: 0;
   box-sizing: border-box;
-  width: 90%;
+    p {
+      text-align: left;
+      margin-left: 10px;
+      margin-top: 0;
+    }
+}
+
+.chatRoom__footer > input, input[type=text] {
+  box-sizing: border-box;
+  width: 30%;
   border-radius: 5px;
+  width: 70%;
+  font-weight: 400;
+  font-size: 0.7rem;
+  padding: 3px;
+  border: 0;
+  outline: none;
 
 }
+
+
 
 .chatRoom {
   ul {
@@ -30,21 +53,63 @@
   }
 
   li {
-    width: 100%;
-    color: white;
+    border-radius: 10px;
+    // width: 100%;
+    color: black;
+    background-color: #fff;
+    color: rgb(73, 61, 61);
+    font-weight: 400;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    padding: 3px;
 
   }
 
   li:nth-child(odd) {
     text-align: right;
+    width: 70%;
+    float: right;
+    margin-bottom: 9px;
+    background-color: #1db954;
+    color: white;
+    padding-right: 8px;
+
+
+    
     // border: solid black
   }
 
   li:nth-child(even) {
     text-align: left;
+    width: 70%;
+    float: left;
+    margin-bottom: 9px;
+    background-color: #efeeee;
+    padding-left: 8px;
+
   }
 
   button {
-    color: white;
+    color: black;
+    width: 25%;
+    border: none;
+    background-color: white;
+    font-size: 0.6rem;
   }
+}
+
+.chatRoom  a {
+  color: black;
+  background-color: yellow;
+}
+
+.chatRoom__footer {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1px;
+  border-top: 0.5px solid black;
+  margin-top: 6px;
+
+
 }

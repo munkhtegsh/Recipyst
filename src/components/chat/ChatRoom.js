@@ -11,20 +11,20 @@ class ChatRoom extends Component {
   constructor() {
     super();
     this.state = {
-      chat: ['hello', 'hi there'],
+      chat: [],
       text: ''
     }
 
     socket.on('generate response', data => {
       const chat = [...this.state.chat, data]; 
-      console.log(data)
+      // console.log(data)
       this.setState({ chat })
 
     })
   }
 
   sendMessage = (message, type) => {
-    console.log('message', message);
+    // console.log('message', message);
     socket.emit(`${type} message` , message)
     this.setState({ text: '' })
   }
@@ -43,9 +43,13 @@ class ChatRoom extends Component {
   }
 
   share = () => {
-    let chat = [...this.state.chat, this.props.shared];
-    this.setState({ chat });
-    socket.emit('blast message', this.props.shared);
+    // let chat = [...this.state.chat, this.props.shared];
+    // this.setState({ chat });
+    // console.log(this.props.chat)
+    if (Object.keys(this.props.shared).length !== 0) {
+      this.sendMessage(this.props.shared, "blast")
+    }
+    // socket.emit('blast message', this.props.shared);
 
     // this.sendMessage(this.props.shared)
   }
@@ -53,9 +57,11 @@ class ChatRoom extends Component {
   render() {
     // check is it obj or text ?
       // if object put it int Link tag
+      console.log(this.props.shared)
     const chat = this.state.chat.map((el, i) => {
+      console.log(el)
       if (typeof el === 'object') {
-        return <Link key={el.id} to={el.link}>Link</Link>
+        return <li><Link key={el.id} to={el.link}>Link</Link></li>
       } else {
         return <li key={i}>{el}</li>
       }
@@ -63,11 +69,16 @@ class ChatRoom extends Component {
 
     return (
       <div className="chatRoom">
+        <div className="chatRoom__header" onClick={() => this.props.toggle()}> 
+          <p>__</p>
+        </div>
         <ul>
           { chat }
         </ul>
-        <input type="text" onKeyPress={(e) => this.createNew(e)}/>
-        <button onClick={() => this.share()}> Share </button>
+        <div className="chatRoom__footer">
+          <input placeHolder="Type here..." type="text" onKeyPress={(e) => this.createNew(e)}/>
+          <button onClick={() => this.share()}> SHARE </button>
+        </div>
         
       </div>
     )
