@@ -1,9 +1,11 @@
-.item > p {
-  text-decoration: none; // why not working?
+.searchFood > a {
+  text-decoration: none; 
+
 }
 
-.item__colories {
+.item__calories {
   font-style: normal;
   color: black;
   margin-top: 0.2rem;
+  font-size: 0.8rem;
 }

@@ -45,13 +45,15 @@ class Favorite extends Component {
 
 
       {
-        this.props.favoriteFoodList.length !== 0
+        this.props.favoriteFoodList.length === 0
         ?
+          "YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"
+        :
         <GridList
-        cellHeight={180}
-        style={styles.gridList}
-        style={{height: '100vh'}}
-      >
+          cellHeight={180}
+          style={styles.gridList}
+          style={{height: '100vh'}}
+        >
         {
           this.props.favoriteFoodList && 
           this.props.favoriteFoodList.map((food, id) => {
@@ -68,15 +70,11 @@ class Favorite extends Component {
                   <img src={food.food_img} />
                 </Link>
                 </GridTile>
-            )
-          })
+              )
+            })
+          }
+          </GridList>
         }
-        </GridList>
-        :
-        "YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"
-      }
-
-    
         </div>
 
       </MuiThemeProvider>
@@ -125,3 +123,52 @@ export default connect(mapStateToProps, { getFavoriteItem })(Favorite);
 //   })
 // }
 // </div>
+
+
+
+
+
+
+
+
+
+// <MuiThemeProvider>
+//       <div style={styles.root} className="favorite">
+
+
+//       {
+//         this.props.favoriteFoodList.length !== 0
+//         ?
+//         <GridList
+//         cellHeight={180}
+//         style={styles.gridList}
+//         style={{height: '100vh'}}
+//       >
+//         {
+//           this.props.favoriteFoodList && 
+//           this.props.favoriteFoodList.map((food, id) => {
+//             return (
+
+//                 <GridTile
+//                   key={food.food_img}
+//                   title={food.food_name}
+//                   subtitle={<span>by <b>Susana</b></span>}
+//                   actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+//                 >
+//                 <Link to={`/favorite/${this.props.userid}/${id}`} key={food.id}>
+
+//                   <img src={food.food_img} />
+//                 </Link>
+//                 </GridTile>
+//             )
+//           })
+//         }
+//         </GridList>
+//         :
+//         "YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"
+//       }
+
+    
+//         </div>
+
+//       </MuiThemeProvider>

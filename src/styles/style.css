@@ -80,13 +80,14 @@ button:disabled {
   position: relative;
   margin-top: 18vh; }
 
-.item > p {
+.searchFood > a {
   text-decoration: none; }
 
-.item__colories {
+.item__calories {
   font-style: normal;
   color: black;
-  margin-top: 0.2rem; }
+  margin-top: 0.2rem;
+  font-size: 0.8rem; }
 
 .login {
   display: flex;
@@ -151,7 +152,9 @@ button:disabled {
 .weekly__item {
   display: flex;
   margin: 0.5rem 2rem;
-  height: calc(100% / 6.8); }
+  height: calc(100% / 6.8);
+  border-radius: 0.7rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); }
 
 .weekly__image-container {
   display: flex;
@@ -160,7 +163,8 @@ button:disabled {
 .weekly__img {
   height: 15vh;
   border-radius: 0.7rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0; }
 
 .weekly__food-name {
   position: relative;
@@ -224,9 +228,11 @@ button:disabled {
 
 .favorite {
   position: relative;
-  margin-top: 19vh;
-  margin-bottom: 10vh;
-  height: 100vh; }
+  margin-top: 18vh;
+  margin-bottom: 6.5vh;
+  height: 100vh;
+  padding-top: 0.5vh;
+  background-color: white; }
 
 .daily__share {
   position: absolute;
@@ -336,8 +342,8 @@ button:disabled {
 
 .quickPicker__item {
   width: 5.5rem;
-  border: 0.3px solid black;
-  margin: 5px; }
+  margin: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); }
 
 .daily {
   margin-top: 22vh;
@@ -358,7 +364,9 @@ button:disabled {
 
 .daily__img {
   width: 70%;
-  border-radius: 0.5rem; }
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%); }
 
 .daily__img:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }

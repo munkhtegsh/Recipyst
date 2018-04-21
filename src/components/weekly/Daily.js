@@ -81,9 +81,11 @@ class Daily extends Component {
           <div key={i} className="daily__item">
             <h3 className="food-name">{item.food_name}</h3>
             <Link to={`/daily/di/${i}`}>
-            <img src={item.food_img} 
-              className="daily__img"
-              alt="food image"/>
+            <div className="daily__item-img">
+              <img src={item.food_img} 
+                className="daily__img"
+                alt="food image"/>
+            </div>
             </Link>
             <RaisedButton  className="img_btn" target="_blank" label="Instructions" href={item.url}></RaisedButton>
             <Link to={`/daily/di/${i}`}> 

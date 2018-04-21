@@ -30,7 +30,7 @@ const Item = (props) => {
         titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)">
 
       <img src={props.image} />
-      <p className="item__colories">calories: {props.calories}</p>
+      <p className="item__calories">calories: {props.calories}</p>
       </GridTile>
       </div>
     </MuiThemeProvider>

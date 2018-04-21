@@ -59,16 +59,22 @@ class Weekly extends Component {
       )
     });
 
+    console.log( this.props.weeklyFoodList.length === 0)
+
+    console.log(this.props.weeklyFoodList.length)
+
     return (
       <MuiThemeProvider>
         <div className='weekly'>
-          {
-            this.props.weeklyFoodList.length !== 0
-            ?
+        {
+          this.props.weeklyFoodList.length === 0
+          ?
+          "YOU HAVEN'T CHOOSE ANY FOOD THIS WEEK!"
+          :
+          <div>
             { list }
-            :
-            "YOU HAVEN'T CHOOSE ANY FOOD THIS WEEK!"
-          }
+          </div>
+        }
         </div>
       </MuiThemeProvider>
     )
