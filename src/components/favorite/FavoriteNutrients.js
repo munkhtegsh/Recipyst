@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
 import _ from 'underscore';
+
+const style = {
+  width: '75%',
+  textAlign: 'left',
+  display: 'inline-block',
+  marginBottom: '5px',
+  paddingLeft: '10px',
+  padding: '10px'
+};
 
 class FavoriteNutrients extends Component {
   constructor(props) {
@@ -48,20 +59,21 @@ class FavoriteNutrients extends Component {
     let list = this.state.nutreintList.map((item, i) => {
       return (
         <div key={i}>
-          { item }
+          <Paper style={style} zDepth={1}>
+            { item }
+          </Paper>
         </div>
       )
     })
 
     return (
-      <div>
-        <div className="nutrients">
-        <button onClick={() => this.props.history.goBack()}>x</button>
-          <div className="nutrients__p">
+      <MuiThemeProvider>
+        <div className="favoriteNutrients">
+          <div className="favoriteNutrients__favorite">
             { list }
           </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }

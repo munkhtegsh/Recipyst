@@ -59,7 +59,7 @@ class Graphic extends Component {
     return (
       <div className="wrapper__container">
         <main className="wrapper">
-          <Doughnut width={400} height={400} data={data} />
+          <Doughnut width={800} height={800} data={data} />
         </main>
       </div>
     )

@@ -104,7 +104,8 @@ app.post('/api/weekly', (req, res) => {
     // if yes replace it with new food
     // else add item
 
-  db.checkDateExistsInWeekly([day]).then(weeklyList => {
+  db.checkDateExistsInWeekly([day, req.user]).then(weeklyList => {
+    console.log(weeklyList)
     if (weeklyList[0]) {
       db.updateWeeklyList([day, label, image, ing_num, ingredientsArr, calories, totalNutrientsArr, 
         totalTime, totalWeight, url]).then(response => {

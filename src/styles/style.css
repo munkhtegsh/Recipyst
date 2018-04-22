@@ -24,7 +24,8 @@ button:disabled {
   width: 100%;
   position: fixed;
   z-index: 1;
-  top: 0px; }
+  top: 0px;
+  margin-bottom: 0; }
 
 .header__top_menu {
   height: 200px;
@@ -64,21 +65,24 @@ button:disabled {
   margin-left: 2rem; }
 
 .menu {
-  background-color: red; }
+  height: 6.5vh;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-sizing: border-box;
+  background-color: #fafafa; }
 
 .menuBottom {
   height: 6.5vh;
-  position: fixed;
-  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff; }
+  width: 100%; }
 
 .searchFood {
   position: relative;
-  margin-top: 18vh; }
+  padding-top: 18vh; }
 
 .searchFood > a {
   text-decoration: none; }
@@ -146,8 +150,8 @@ button:disabled {
 
 .weekly {
   position: relative;
-  margin-top: 22vh;
-  margin-bottom: 10vh; }
+  padding-top: 22vh;
+  padding-bottom: 10vh; }
 
 .weekly__item {
   display: flex;
@@ -219,24 +223,27 @@ button:disabled {
   margin-top: 42vh; }
 
 .ingredients {
-  margin-top: 18vh;
-  background-color: #e7f0f4;
+  padding-top: 18vh;
   margin-bottom: 8vh;
   text-align: left;
   padding-left: 40px;
-  padding-right: 40px; }
+  padding-right: 40px;
+  padding-bottom: 8vh; }
+
+.ingredients__container {
+  margin: 0 auto;
+  padding-top: 2rem; }
 
 .favorite {
   position: relative;
   margin-top: 18vh;
   margin-bottom: 6.5vh;
-  height: 100vh;
   padding-top: 0.5vh;
   background-color: white; }
 
 .daily__share {
   position: absolute;
-  right: 1rem; }
+  right: 0rem; }
 
 .optionModal {
   margin-top: 10vh;
@@ -288,7 +295,8 @@ button:disabled {
 .cart__quantity {
   width: 1.2rem;
   margin-left: 1.5rem;
-  outline: none; }
+  outline: none;
+  border: 0; }
 
 .cart__id {
   margin-right: 1rem; }
@@ -347,7 +355,8 @@ button:disabled {
 
 .daily {
   margin-top: 22vh;
-  margin-bottom: 9vh; }
+  margin-bottom: 9vh;
+  padding-bottom: 9vh; }
 
 .daily__item {
   position: relative; }
@@ -363,7 +372,7 @@ button:disabled {
   background: rgba(255, 255, 255, 0.4); }
 
 .daily__img {
-  width: 70%;
+  width: 90%;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%); }
@@ -373,22 +382,31 @@ button:disabled {
 
 .daily__p {
   text-align: left;
-  padding-left: 40px;
-  padding-right: 40px; }
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 80%;
+  outline: none;
+  border: 0; }
 
 .img_btn {
   margin: 1rem; }
 
 .daily__edit-btn {
   position: absolute;
-  right: 4rem; }
+  right: 1.5rem;
+  border: none; }
+
+.ingredients-info__save-btn {
+  position: absolute;
+  right: 1.5rem;
+  border: none;
+  background-color: #fff; }
 
 .nutrients {
   position: relative;
-  margin-top: 18vh;
-  margin-bottom: 10vh;
-  background-color: #e7f0f4;
-  height: 100vh; }
+  padding-top: 22vh;
+  padding-bottom: 10vh;
+  background-color: #e7f0f4; }
 
 .nutrients__p {
   position: relative;

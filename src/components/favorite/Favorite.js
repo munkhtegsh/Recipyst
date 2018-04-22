@@ -16,12 +16,12 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    height: '100vh'
   },
   gridList: {
     width: 500,
     height: 450,
     overflowY: 'auto',
+    height: '100%'
   },
 };
 
@@ -39,6 +39,8 @@ class Favorite extends Component {
   }
 
   render() {
+
+    console.log(this.props.username)
     return (
       <MuiThemeProvider>
       <div style={styles.root} className="favorite">
@@ -47,12 +49,12 @@ class Favorite extends Component {
       {
         this.props.favoriteFoodList.length === 0
         ?
-          "YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"
+          <p className="havent_select">"YOU HAVEN'T SELECT ANY FOOD IN YOUR FAVORITE LIST!"</p>
         :
         <GridList
           cellHeight={180}
           style={styles.gridList}
-          style={{height: '100vh'}}
+          cols={2}
         >
         {
           this.props.favoriteFoodList && 
@@ -62,7 +64,7 @@ class Favorite extends Component {
                 <GridTile
                   key={food.food_img}
                   title={food.food_name}
-                  subtitle={<span>by <b>Susana</b></span>}
+                  subtitle={<span>by <b> { this.props.username } </b></span>}
                   actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
                 >
                 <Link to={`/favorite/${this.props.userid}/${id}`} key={food.id}>
@@ -85,20 +87,14 @@ class Favorite extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteFoodList: state.favoriteFoodList,
-    userid: state.userInfo.id //getting userid from redux
+    userid: state.userInfo.id,
+    username: state.userInfo.username
   }
 }
 
 export default connect(mapStateToProps, { getFavoriteItem })(Favorite);
 
-// ?
-// <Nodata/>
-// :
-// 'HELLO'
-
-
-
-
+          //  style={{height: '100vh'}} 
 
 
 // <div className='favorite'>

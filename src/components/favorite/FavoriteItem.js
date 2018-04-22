@@ -7,11 +7,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 
 const style = {
-  width: '75%',
-  marginLeft: '20',
-  marginRight: '20',
+  width: '90%',
+  // marginLeft: '20',
+  // marginRight: '20',
   textAlign: 'left',
   display: 'inline-block',
+  marginBottom: '5px'
 };
 
 class FavoriteItem extends React.Component{

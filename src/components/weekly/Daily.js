@@ -11,11 +11,12 @@ import AddToCart from 'material-ui/svg-icons/editor/mode-edit';
 
 let outside;
 const style = {
-  width: '75%',
-  marginLeft: '20',
-  marginRight: '20',
+  width: '90%',
+  // marginLeft: '20',
+  // marginRight: '20',
   textAlign: 'left',
   display: 'inline-block',
+  marginBottom: '5px'
 };
 
 class Daily extends Component { 
@@ -81,9 +82,9 @@ class Daily extends Component {
           <div key={i} className="daily__item">
             <h3 className="food-name">{item.food_name}</h3>
             <Link to={`/daily/di/${i}`}>
-              <img src={item.food_img} 
-                className="daily__img"
-                alt="food image"/>
+            <img src={item.food_img} 
+              className="daily__img"
+              alt="food image"/>
             </Link>
             <RaisedButton  className="img_btn" target="_blank" label="Instructions" href={item.url}></RaisedButton>
             <Link to={`/daily/di/${i}`}> 
@@ -121,7 +122,7 @@ class Daily extends Component {
                     name="itemWeight"
                     onChange={(e) => this.editIngredients(e)}
                   />
-                  <button onClick={() => this.save(i)}> Save </button>
+                  <button onClick={() => this.save(i)} className="ingredients-info__save-btn"> Save </button>
                 </Paper>
               :
               <Paper style={style} zDepth={1}>

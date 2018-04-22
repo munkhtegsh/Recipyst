@@ -9,5 +9,6 @@ body {
   background: linear-gradient(to left, #1db954, #8DC26F);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
-  height: 100vh;
+  /* height: 100vh; */
+
 }

@@ -3,6 +3,17 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getWeeklyItems, getFavoriteItem } from '../../ducks/reducer';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
+
+let outside;
+const style = {
+  width: '100%',
+  textAlign: 'left',
+  display: 'inline-block',
+  marginBottom: '5px',
+  paddingLeft: '10px'
+};
 
 class Ingredients extends Component {
   constructor() {
@@ -35,40 +46,45 @@ class Ingredients extends Component {
       this.setState({buttonClicked: true})
     }
   }
-
+ 
 // need image to load here 
   render() {
     console.log(this.state.day)
     return (
+      <MuiThemeProvider>
       <div className="ingredients">
-      <button onClick={() => this.props.history.goBack()}>x</button>
-        {
-          this.props.chosenItem.ingredients && 
-          this.props.chosenItem.ingredients.map((item, i) => {
-            return (
-              <div key={i}>
-                <p className='ingredients__p'>- { item.text }</p>
-                <p className='ingredients__p'>Weight: { item.weight }</p>
-              </div>
-            )
-          })
-        }
+        <div className="ingredients__container">
+          {
+            this.props.chosenItem.ingredients && 
+            this.props.chosenItem.ingredients.map((item, i) => {
+              return (
+                <div key={i}>
+                <Paper style={style} zDepth={1}>
+                  <p className='ingredients__p'>- { item.text } {Number.parseFloat(item.weight).toFixed(2)}gr</p>
+                </Paper>
 
-        <div>
-          <Link to="/weekly"><button onClick={() => this.addToWeeklyList()} disabled={!this.state.buttonClicked}> Weekly </button></Link>
-          <select value={this.state.day} id="" ref="selectedDay" onChange={() => this.handleSelected()}>
-            <option value="0" disabled="true">Select Day</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
+                </div>
+              )
+            })
+          }
+
+          <div>
+            <Link to="/weekly"><button onClick={() => this.addToWeeklyList()} disabled={!this.state.buttonClicked}> Weekly </button></Link>
+            <select value={this.state.day} id="" ref="selectedDay" onChange={() => this.handleSelected()}>
+              <option value="0" disabled="true">Select Day</option>
+              <option value="7">Sun</option>
+              <option value="1">Mon</option>
+              <option value="2">Tue</option>
+              <option value="3">Wed</option>
+              <option value="4">Thu</option>
+              <option value="5">Fri</option>
+              <option value="6">Sat</option>
+            </select>
+          </div>
+          <Link to="/favorite"><button onClick={() => this.addToFavoriteList()}> Favorite </button></Link>
         </div>
-        <Link to="/favorite"><button onClick={() => this.addToFavoriteList()}> Favorite </button></Link>
       </div>
+      </MuiThemeProvider>
       )
   }
 }

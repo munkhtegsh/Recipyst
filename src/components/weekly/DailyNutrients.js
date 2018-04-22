@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { getCurrentNutrients } from '../../ducks/reducer';
 import Graphic from './chart/Graphic';
 import _ from 'underscore';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
+
+const style = {
+  width: '100%',
+  textAlign: 'left',
+  display: 'inline-block',
+  marginBottom: '5px',
+  paddingLeft: '10px'
+};
 
 class FavoriteNutrients extends Component {
   constructor(props) {
@@ -47,7 +57,9 @@ class FavoriteNutrients extends Component {
     let list = this.state.nutreintList.map((item, i) => {
       return (
         <div key={i}>
+        <Paper style={style} zDepth={1}>
           { item }
+        </Paper>
         </div>
       )
     })
@@ -55,15 +67,16 @@ class FavoriteNutrients extends Component {
     this.props.getCurrentNutrients(this.state.nutreintList);
 
     return (
-      <div>
-        <div className="nutrients">
-        <button onClick={() => this.props.history.goBack()}>x</button>
-          <div className="nutrients__p">
-            { list }
+      <MuiThemeProvider>
+        <div>
+          <div className="nutrients">
             <Graphic />
+            <div className="nutrients__p">
+              { list }
+            </div>
           </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
