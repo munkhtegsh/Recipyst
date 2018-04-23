@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Star from 'material-ui/svg-icons/toggle/star';
 
 const styles = {
   root: {
@@ -65,7 +65,7 @@ class Favorite extends Component {
                   key={food.food_img}
                   title={food.food_name}
                   subtitle={<span>by <b> { this.props.username } </b></span>}
-                  actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                  actionIcon={<IconButton><Star color="white" /></IconButton>}
                 >
                 <Link to={`/favorite/${this.props.userid}/${id}`} key={food.id}>
 
@@ -149,7 +149,7 @@ export default connect(mapStateToProps, { getFavoriteItem })(Favorite);
 //                   key={food.food_img}
 //                   title={food.food_name}
 //                   subtitle={<span>by <b>Susana</b></span>}
-//                   actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+//                   actionIcon={<IconButton><Star color="white" /></IconButton>}
 //                 >
 //                 <Link to={`/favorite/${this.props.userid}/${id}`} key={food.id}>
 

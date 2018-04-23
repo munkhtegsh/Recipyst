@@ -14,7 +14,9 @@ const initialState = {
   favoriteFoodList: [],
   cart: [],
   shared: {},
-  currentNutrients: []
+  currentNutrients: [],
+  totalIngrToBuy: 0,
+  myRecipe: []
 }
 
 // actionTypes
@@ -27,6 +29,8 @@ const GET_CART_ITEMS = "GET_CART_ITEMS";
 const SHARE_FOOD = "SHARE_FOOD";
 const CHANGE_TO_EMPTY= "CHANGE_TO_EMPTY";
 const GET_CURRENT_NUTRIENTS = "GET_CURRENT_NUTRIENTS";
+const GET_TOTAL_INGR_TO_BUY = "GET_TOTAL_INGR_TO_BUY";
+const GET_MY_RECIPE = "GET_MY_RECIPE";
 
 // reducer
 const reducer = (state = initialState, action) => {
@@ -48,7 +52,11 @@ const reducer = (state = initialState, action) => {
     case CHANGE_TO_EMPTY: 
       return {...state, shared: ''};
     case GET_CURRENT_NUTRIENTS:
-      return {...state, currentNutrients: action.payload}
+      return {...state, currentNutrients: action.payload};
+    case GET_TOTAL_INGR_TO_BUY + '_FULFILLED':
+      return {...state, totalIngrToBuy: action.payload};
+    case GET_MY_RECIPE + '_FULFILLED':
+      return {...state, myRecipe: action.payload};
     default:
       return state;
   }
@@ -142,4 +150,26 @@ export const getCurrentNutrients = (nutrients) => {
   }
 }
 
+export const getTotalIngrToBuy = () => {
+  let totalIngr = axios.get('/api/totaling').then(res => {
+    return parseInt(res.data[0].sum);
+  })
+  console.log(totalIngr)
+
+  return {
+    type: GET_TOTAL_INGR_TO_BUY,
+    payload: totalIngr
+  }
+}
+
+export const getMyRecipe = () => {
+  let ownRecipe = axios.get('/api/ownrecipe').then(res => {
+    return res.data
+  })
+  console.log(ownRecipe)
+  return {
+    type: GET_MY_RECIPE,
+    payload: ownRecipe
+  }
+}
 export default reducer;

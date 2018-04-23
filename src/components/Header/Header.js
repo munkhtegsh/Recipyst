@@ -8,8 +8,7 @@ import open from './nav-open-table.svg';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DrawerOpenRightExample from './Drawer';
 import yellow_pencil from './yellow_pencil.svg';
-import paper_pencil from './paper_pencil.svg'; // ask which one is better ?
-
+import paper_pencil from './paper_pencil.svg'; 
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -23,10 +22,9 @@ class Header extends Component {
     }
   }
 
-  componentDidMount() { //redux is breaking, because of devtool ext
+  componentDidMount() { 
     this.props.getUserInfo();
     this.handleStyle();
-    
   }
 
   handleStyle(e) {
@@ -40,15 +38,28 @@ class Header extends Component {
   }
 
   render () {
+    console.log(this.props.totalIngrToBuy)
     return (
     <MuiThemeProvider>
     <div className="header">
           <div className="header__top_menu">
             <img src={this.state.profile_img} 
               className="header__profile-img"
-              alt="profile image"/>
+              alt="profile"/>
             <div className="header__home__grocery">
               <Link to="/quickPicker"><img src={yellow_pencil} width="35" alt=""/></Link>
+           
+                {
+                  this.props.totalIngrToBuy === 0 || isNaN(this.props.totalIngrToBuy)
+                  ?
+                    null
+                  :
+                  <div className="header__total-ingr">
+                    { this.props.totalIngrToBuy }
+                  </div>
+                }
+
+
               <Link to="/shoppingcart"><img src={bag} width="35" alt=""/></Link>
               <img className='header__open-menu' src={open} width="35" alt="" onClick={() => this.toggleClick()}/>
             </div>
@@ -124,7 +135,8 @@ const mapStateToProps = (state) => {
   return {
     id: state.userInfo.id,
     username: state.userInfo.username,
-    profile_img: state.userInfo.profile_img
+    profile_img: state.userInfo.profile_img,
+    totalIngrToBuy: state.totalIngrToBuy
   }
 }
 

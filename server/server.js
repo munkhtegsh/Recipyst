@@ -6,6 +6,8 @@ const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const socket = require('socket.io');
+const cors = require('cors');
+const S3 = require('./S3.js');
 
 
 const PORT = process.env.PORT || 4000;
@@ -19,12 +21,14 @@ massive(process.env.SERVER_SCRIPT).then(db => {
 });
 
 // session_____________________________________
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: process.env.SECRET_SESSION,
 }));
+
+S3(app)
 
 // Auth0_______________________________________
 app.use(passport.initialize());
@@ -240,6 +244,16 @@ app.put('/api/cart/:id', (req, res) => {
   // })
 });
 
+  // get total ingredients number
+  app.get('/api/totaling', (req, res) => {
+    const db = req.app.get('db');
+    console.log('hi' + req.user)
+    db.getTotalIngrToBuy([req.user]).then(total => {
+      console.log(total)
+      res.status(200).send(total);
+    })
+  })
+
 // socket____________________________________
 const io = socket(app.listen(PORT, () => console.log(`listening on port: ${PORT}`)))
 
@@ -253,6 +267,29 @@ io.on('connection', socket => {
   //   console.log('emit');
   //   socket.emit('generate response', input);
   // });
+});
+
+//=============================================================//
+//                           OwnRecipe                         //
+//=============================================================//
+
+app.get('/api/ownrecipe', (req, res) => {
+  const db = req.app.get('db');
+  console.log('hi')
+  db.getMyRecipe([req.user]).then(response => {
+    res.status(200).send(response);
+  })
+})
+
+app.post('/api/ownrecipe', (req, res) => {
+  const db = req.app.get('db');
+  const { foodname, ingredients, totalIngr, cookingTime, weight, foodImg
+  } = req.body;
+
+  console.log(foodname, ingredients, totalIngr, cookingTime, weight, foodImg)
+  db.addOwnRecipe([foodname, ingredients, totalIngr, cookingTime, weight, req.user, foodImg]).then( response => {
+    res.status(200).send(response);
+  })
 });
 
 // app.listen(PORT, () => console.log(`Server is up on: ${PORT}`));

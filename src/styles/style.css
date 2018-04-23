@@ -62,7 +62,18 @@ button:disabled {
 .header__profile-img {
   border-radius: 50%;
   height: 100%;
-  margin-left: 2rem; }
+  margin-left: 2rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); }
+
+.header__total-ingr {
+  position: absolute;
+  background: green;
+  border-radius: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: white;
+  top: 0.3rem;
+  right: 3.7rem; }
 
 .menu {
   height: 6.5vh;
@@ -157,8 +168,7 @@ button:disabled {
   display: flex;
   margin: 0.5rem 2rem;
   height: calc(100% / 6.8);
-  border-radius: 0.7rem;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); }
+  border-radius: 0.7rem; }
 
 .weekly__image-container {
   display: flex;
@@ -167,7 +177,7 @@ button:disabled {
 .weekly__img {
   height: 15vh;
   border-radius: 0.7rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 0; }
 
 .weekly__food-name {
@@ -182,7 +192,8 @@ button:disabled {
   padding-right: 1rem;
   box-sizing: border-box;
   color: #493d3d;
-  background: linear-gradient(to bottom, #fafafa 0%, #fafafa 10%, #fafafa 100%); }
+  background: linear-gradient(to bottom, #fafafa 0%, #fafafa 10%, #fafafa 100%);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); }
 
 .weekly__food-name > a {
   text-decoration: none;
@@ -239,11 +250,20 @@ button:disabled {
   margin-top: 18vh;
   margin-bottom: 6.5vh;
   padding-top: 0.5vh;
-  background-color: white; }
+  background: #1db954;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #1db954, #8DC26F);
+  background: -moz-linear-gradient(right, #1db954, #8DC26F);
+  background: -o-linear-gradient(right, #1db954, #8DC26F);
+  background: linear-gradient(to left, #1db954, #8DC26F); }
 
 .daily__share {
   position: absolute;
   right: 0rem; }
+
+.favoriteNutrients {
+  padding-top: 22vh;
+  margin-bottom: 10vh; }
 
 .optionModal {
   margin-top: 10vh;
@@ -540,3 +560,13 @@ button:disabled {
   height: 80vh;
   width: 80vw;
   background: 'red'; }
+
+.myRecipe {
+  padding-top: 18vh;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-bottom: 10vh; }
+
+.myRecipies__img {
+  width: 100%;
+  background-size: contain; }

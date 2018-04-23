@@ -5,6 +5,7 @@ import search from './search.svg';
 import weekly from './weekly.svg';
 import backArrow from './backArrow.svg';
 import ChatRoom from '../chat/ChatRoom';
+import chat from './chat.svg';
 
 
 class Menu extends Component {
@@ -43,7 +44,8 @@ class Menu extends Component {
           <Link to='/weekly'>
             <img src={weekly} width="40" alt=""/>
           </Link>
-          <button onClick={() => this.toggle()}> Chat </button>
+
+          <img src={chat} width="40" alt="" onClick={() => this.toggle()}/>
         </div>
       </div>
     )

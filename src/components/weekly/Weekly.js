@@ -19,7 +19,6 @@ const styles = {
   }
 }
 
-
 class Weekly extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ class Weekly extends Component {
 
   deleteItem = (id) => {
     axios.delete(`/api/weekly/${id}`);
-    this.props.getWeeklyItems();  // do I need to call redux or axios.post?
+    this.props.getWeeklyItems(); 
   }
 
   render() {
@@ -59,10 +58,6 @@ class Weekly extends Component {
       )
     });
 
-    console.log( this.props.weeklyFoodList.length === 0)
-
-    console.log(this.props.weeklyFoodList.length)
-
     return (
       <MuiThemeProvider>
         <div className='weekly'>
@@ -88,16 +83,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { getWeeklyItems })(Weekly);
-
-
-// { this.props.weeklyFoodList }
-// ?
-//   { list }
-// :
-//   <Nodata/>
-
-
-// <p>Calories: {item.calories}</p>
 
 
 // <div key={i}>

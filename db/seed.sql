@@ -8,6 +8,8 @@ create table users (
 insert into users (username, auth_id, profile_img)
 values ('Potter', 'dfsjfksdjfsdf', 'src=fkdjfksjlfdss')
 
+
+-- weekly table
 create table weekly (
     id SERIAL PRIMARY KEY,
     day integer,
@@ -43,8 +45,7 @@ total_weight = 8,
 url = 'url'
 where day = 4
 
-
-
+-- favorite table
 create table favorite (
     id SERIAL PRIMARY KEY,
     food_name VARCHAR (200),
@@ -73,6 +74,22 @@ create table cart (
     user_id integer REFERENCES users(id)
 )
 
+
+-- ownrecipe table
 insert into cart (name, quantity, user_id)
 values ('Potato', 1, 5 )
+
+create table myrecipe (
+    id SERIAL PRIMARY KEY,
+    foodname varchar(140),
+    ingredients varchar(250),
+    totalIngr varchar(20),
+    cookingTime varchar(20),
+    weight varchar(20),
+    auth_id integer,
+    foodImg text
+)
+
+insert into myrecipe (foodname, ingredients, totalIngr, cookingTime, weight, auth_id, foodImg)
+values ('Buuz', 'meat 3gr, flour 5kg, onion 2', 4, '20 min', '1kg', 5, 'src=fkdjfksjlfdss')
 

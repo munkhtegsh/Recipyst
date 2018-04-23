@@ -16,6 +16,7 @@ import Item from './components/item/Item';
 import Daily from './components/weekly/Daily';
 import DailyNutrients from './components/weekly/DailyNutrients';
 import QuickPicker from './components/quickPicker/QuickPicker';
+import MyRecipe from './components/myRecipe/MyRecipe';
 
 export default (
   <Switch>
@@ -28,6 +29,7 @@ export default (
     <Route path="/favorite/FavoriteNutrients/:userid/:id" component={ FavoriteNutrients } /> {/* added userid*/}
     <Route path="/favorite/:userid/:id" component={ FavoriteItem } /> {/* added userid*/}
     <Route path="/favorite" component={ Favorite } />
+    <Route path="/myrecipe" component={ MyRecipe } />
 
     <Route path="/recipe/:id" component={ Recipe } />
     <Route path="/searchFood" component={ SearchFood } />

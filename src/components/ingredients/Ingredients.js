@@ -49,7 +49,6 @@ class Ingredients extends Component {
  
 // need image to load here 
   render() {
-    console.log(this.state.day)
     return (
       <MuiThemeProvider>
       <div className="ingredients">

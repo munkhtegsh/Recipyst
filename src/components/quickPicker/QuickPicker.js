@@ -3,6 +3,8 @@ import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import { connect } from 'react-redux';
+import { getTotalIngrToBuy } from '../../ducks/reducer';
 
 // drinks 
 import water1 from './drinks/water1.svg'
@@ -80,10 +82,11 @@ class QuickPicker extends Component {
     }
   }
 
+
   handleClick(e) {
     const item = {name: e.target.name, quantity: 1};
     axios.post('/api/cart', item).then(res => {
-
+      this.props.getTotalIngrToBuy()
     })
   }
 
@@ -340,7 +343,13 @@ class QuickPicker extends Component {
   }
 }
 
-export default QuickPicker;
+// const mapStateToProps = (state) => {
+//   return {
+//     totalIngrToBuy: state.totalIngrToBuy
+//   }
+// }
+
+export default connect(null, { getTotalIngrToBuy })( QuickPicker);
 
 // <div className="quickPicker"> //not sure that i need to wrap them up in here? might be delete this line
 // </div>

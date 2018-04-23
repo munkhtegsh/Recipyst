@@ -10,7 +10,6 @@ import Search from 'material-ui/svg-icons/action/search';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
 const styles = {
   largeIcon: {
     width: 120,
@@ -27,8 +26,6 @@ const styles = {
 const style = {
   margin: 12,
 };
-
-
 
 class SearchFood extends Component {
   constructor(props) {
@@ -49,7 +46,6 @@ class SearchFood extends Component {
   }
 
   render() {
-    console.log(this.props.searchedFood);
     const list = this.props.searchedFood.map((item, i) => {
       return (
         <Link to={`/ingredients/${i}`} key={i}             

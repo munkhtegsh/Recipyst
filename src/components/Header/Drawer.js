@@ -67,6 +67,13 @@ export default (props) => (
         />
       </Link>
 
+      <Link to ="/myrecipe"> 
+        <FlatButton label="My recipe" primary={true} fullWidth={true} 
+          onClick={() => props.toggleClick()}
+          style={{color: "#424242"}}
+        />
+      </Link>
+
       <a href={process.env.REACT_APP_LOGOUT}> 
         <FlatButton label="Logout" primary={true} fullWidth={true} 
           onClick={() => props.toggleClick()}

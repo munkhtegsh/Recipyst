@@ -5,7 +5,11 @@
   // height: 100vh;
   padding-top: 0.5vh;
   // margin-bottom: 8vh;
-  background-color: white;
+  background: #1db954; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #1db954, #8DC26F);
+  background: -moz-linear-gradient(right, #1db954, #8DC26F);
+  background: -o-linear-gradient(right, #1db954, #8DC26F);
+  background: linear-gradient(to left, #1db954, #8DC26F);
   // display: flex;
   // flex-wrap: wrap;
 }
@@ -39,3 +43,8 @@
   position: absolute;
   right: 0rem;
 }
+
+.favoriteNutrients {
+  padding-top: 22vh;
+  margin-bottom: 10vh;
+  }

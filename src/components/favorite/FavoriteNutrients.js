@@ -44,7 +44,6 @@ class FavoriteNutrients extends Component {
       nutrientNames.forEach(item => {
         for(let key in obj) {
         if(item === key) {
-          console.log(item)
           let tpl = _.template("<%= label %> <%= quantity %> <%= unit %> ")
           nutreintList.push(tpl({label: obj[key].label, quantity: obj[key].quantity.toFixed(2), unit: obj[key].unit}));
         }
@@ -55,7 +54,6 @@ class FavoriteNutrients extends Component {
   }
 
   render() {
-    console.log(this.state.nutreintList)
     let list = this.state.nutreintList.map((item, i) => {
       return (
         <div key={i}>

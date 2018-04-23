@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCartItems } from '../../ducks/reducer';
+import { getCartItems, getTotalIngrToBuy } from '../../ducks/reducer';
 import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import IconButton from 'material-ui/IconButton';
@@ -14,8 +14,6 @@ const styles = {
     padding: 0,
   },
 }
-
-
 
 class ShoppingCart extends Component {
   constructor() {
@@ -36,6 +34,7 @@ class ShoppingCart extends Component {
     if (this.state.name) {
       axios.post('/api/cart', item).then(res => {
         this.props.getCartItems();
+        this.props.getTotalIngrToBuy();
       }) 
     }
   }
@@ -43,6 +42,7 @@ class ShoppingCart extends Component {
   deleteItem(id) {
     axios.delete(`/api/cart/${id}`).then(res => {
       this.props.getCartItems();
+      this.props.getTotalIngrToBuy();
     })  
   }
 
@@ -138,7 +138,7 @@ const mapStateToProps = (state) => {
     cart: state.cart
   }
 }
-export default connect(mapStateToProps, { getCartItems })(ShoppingCart);
+export default connect(mapStateToProps, { getCartItems, getTotalIngrToBuy })(ShoppingCart);
 
 
 
