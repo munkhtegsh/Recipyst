@@ -10,18 +10,7 @@ import Search from 'material-ui/svg-icons/action/search';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const styles = {
-  largeIcon: {
-    width: 120,
-    height: 120,
-  },
-  large: {
-    width: 240,
-    height: 240,
-    padding: 30,
-    marginTop: 100
-  },
-};
+
 
 const style = {
   margin: 12,
@@ -76,15 +65,14 @@ class SearchFood extends Component {
             onClick={() => this.getFood()}
           />
 
-            { list }
-            <IconButton iconStyle={styles.largeIcon} style={styles.large} onClick={() => this.toggle()} >
-              <Search />
-            </IconButton>
-            <OptionalModal 
-              selectedOption={this.state.selectedOption}
-              toggle={() => this.toggle()}
-              getFood={(queries) => this.getFood(queries)}
-            />
+          { list }
+
+          <OptionalModal 
+            // selectedOption={this.state.selectedOption}
+            // toggle={() => this.toggle()}
+            getFood={(queries) => this.getFood(queries)}
+            fullWidth={true}
+          />
         </div>
       </MuiThemeProvider>
     )

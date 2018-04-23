@@ -5,6 +5,9 @@ import { getWeeklyItems, getFavoriteItem } from '../../ducks/reducer';
 import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
+import IconButton from 'material-ui/IconButton';
+import TodayIcon from 'material-ui/svg-icons/action/today';
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite';
 
 let outside;
 const style = {
@@ -68,7 +71,12 @@ class Ingredients extends Component {
           }
 
           <div>
-            <Link to="/weekly"><button onClick={() => this.addToWeeklyList()} disabled={!this.state.buttonClicked}> Weekly </button></Link>
+          <Link to="/weekly"><IconButton tooltip="weekly"  disabled={!this.state.buttonClicked} 
+            onClick={() => this.addToWeeklyList()}>
+            <TodayIcon />
+          </IconButton></Link>
+
+      
             <select value={this.state.day} id="" ref="selectedDay" onChange={() => this.handleSelected()}>
               <option value="0" disabled="true">Select Day</option>
               <option value="7">Sun</option>
@@ -80,7 +88,13 @@ class Ingredients extends Component {
               <option value="6">Sat</option>
             </select>
           </div>
-          <Link to="/favorite"><button onClick={() => this.addToFavoriteList()}> Favorite </button></Link>
+          <br/>
+
+
+          <Link to="/favorite"><IconButton tooltip="Favorite"  onClick={() => this.addToFavoriteList()}>
+            <FavoriteIcon />
+          </IconButton></Link>
+
         </div>
       </div>
       </MuiThemeProvider>

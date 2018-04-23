@@ -14,7 +14,8 @@ import Close from 'material-ui/svg-icons/navigation/close';
 
 export default (props) => (
   <div>
-    <Drawer width={200} openSecondary={true} open={props.toggle}
+    <Drawer width={200} openSecondary={true} open={props.toggle}        
+
       // containerClassName={{backgroundColor: "#1db954"}}
       
     >

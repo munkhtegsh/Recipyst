@@ -48,11 +48,6 @@ class Graphic extends Component {
         pointHoverBorderColor: 'rgba(255,99,132,1)',
         data: [19, 30, 18, 80, 14]
       },
-      // options: {
-      //   legend: {
-      //     display: false
-      //   }
-      // }
       ]
     };
   
