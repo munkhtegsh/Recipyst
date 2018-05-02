@@ -32,6 +32,7 @@ class FavoriteItem extends React.Component{
 
   render() {
     let { id } = this.props.match.params;
+    console.log(id)
     let favFood = this.props.favoriteFoodList[id]; //why sometimes bugged?
     console.log(favFood)
     const list = favFood.ingredients.map((item, i) => {
