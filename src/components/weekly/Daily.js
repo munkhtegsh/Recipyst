@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getTotalIngrToBuy } from '../../ducks/reducer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
@@ -63,7 +64,9 @@ class Daily extends Component {
       if (i === index) {
         // console.log(item.text)
         // let arr = item.text.split(' ')
-        axios.post('/api/cart', {name: item.text, quantity: 1});
+        axios.post('/api/cart', {name: item.text, quantity: 1}).then(res => {
+          this.props.getTotalIngrToBuy();
+        });
       }
     })
   }
@@ -162,4 +165,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Daily);
+
+
+export default connect(mapStateToProps, { getTotalIngrToBuy })(Daily);

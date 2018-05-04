@@ -49,8 +49,8 @@ const reducer = (state = initialState, action) => {
       return {...state, cart: action.payload};
     case SHARE_FOOD:
       return {...state, shared: action.payload};
-    case CHANGE_TO_EMPTY: 
-      return {...state, shared: ''};
+    // case CHANGE_TO_EMPTY: 
+    //   return {...state, shared: ''};
     case GET_CURRENT_NUTRIENTS:
       return {...state, currentNutrients: action.payload};
     case GET_TOTAL_INGR_TO_BUY + '_FULFILLED':

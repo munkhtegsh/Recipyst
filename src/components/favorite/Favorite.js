@@ -45,7 +45,6 @@ class Favorite extends Component {
       <MuiThemeProvider>
       <div style={styles.root} className="favorite">
 
-
       {
         this.props.favoriteFoodList.length === 0
         ?

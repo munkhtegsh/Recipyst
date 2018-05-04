@@ -7,6 +7,7 @@ import Weekly from './components/weekly/Weekly';
 import Favorite from './components/favorite/Favorite';
 import FavoriteItem from './components/favorite/FavoriteItem';
 import FavoriteNutrients from './components/favorite/FavoriteNutrients';
+import ShareFood from './components/favorite/ShareFood';
 import Recipe from './components/recipe/Recipe';
 import SearchFood from './components/searchFood/SearchFood';
 import SearchVideo from './components/searchVideo/searchVideo';
@@ -28,6 +29,7 @@ export default (
     <Route path="/daily/:id" component={ Daily } /> 
     <Route path="/favorite/FavoriteNutrients/:userid/:id" component={ FavoriteNutrients } /> {/* added userid*/}
     <Route path="/favorite/:userid/:id" component={ FavoriteItem } /> {/* added userid*/}
+    <Route path="/sharefood/:userid/:id" component={ ShareFood } /> 
     <Route path="/favorite" component={ Favorite } />
     <Route path="/myrecipe" component={ MyRecipe } />
 

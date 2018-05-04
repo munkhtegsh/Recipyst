@@ -166,12 +166,21 @@ app.post('/api/favorite', (req, res) => {
   const ing_num = ingredients.length + 1;
   const ingredientsArr = JSON.stringify(ingredients)
   const totalNutrientsArr = JSON.stringify(totalNutrients)
-  console.log(label, image, ing_num, ingredients, calories, req.user)
+  // console.log(label, image, ing_num, ingredients, calories, req.user)
   db.addToFavorite([label, image, ing_num, ingredientsArr, calories, req.user, totalNutrientsArr, 
     totalTime, totalWeight, url]).then( response => {
     res.status(200).send(response);
   })
 });
+
+app.get('/api/favorite/:id', (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  console.log(id)
+  db.getFavoriteFood([id]).then(respond => {
+    res.status(200).send(respond);
+  })
+})
 
 app.delete('/api/favorite/:id', (req, res) => {
   const db = req.app.get('db');

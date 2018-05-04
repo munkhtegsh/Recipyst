@@ -86,7 +86,7 @@ class QuickPicker extends Component {
   handleClick(e) {
     const item = {name: e.target.name, quantity: 1};
     axios.post('/api/cart', item).then(res => {
-      this.props.getTotalIngrToBuy()
+      this.props.getTotalIngrToBuy();
     })
   }
 
