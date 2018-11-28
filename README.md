@@ -50,16 +50,18 @@ This is a single page application that can used as a food recipe plan for anyone
     * Currently user can chat in broadcast /Socket.io/
     * User is able to share his/her favorite recipe with others
 ## Screenshot/GIF
+### Share food with others
+
+![share](https://user-images.githubusercontent.com/24214152/49121295-c9238600-f264-11e8-8c22-d84cd5daec6a.gif)
 
 ## Security 
   1. Access to API is protected by several middleware layer that if the client should be made access to recource
   2. Each input by the user protected from common security vulnerabilities
 ## API list
 The following APIs can be called for registration and login purposes. No Authentication is required to call these APIs.
-1. `POST `
-2. `GET /auth/login`
-3. `GET /auth/logout`
-1. `/api/userinfo`
+1. `GET /auth/login`
+2. `GET /auth/logout`
+3. `GET /api/userinfo`
 2. `GET /api/weekly`
 3. `POST /api/weekly`
 4. `DELETE /api/weekly/:id`
